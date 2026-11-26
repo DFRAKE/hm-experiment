@@ -1,0 +1,30 @@
+{
+  "experiment": "bot-image_rec-text",
+  "split": "valid",
+  "bots_with_valid_in_pool": 976,
+  "valid_purchases": 3501,
+  "valid_purchases_in_pool": 3229,
+  "current": {
+    "taste_half_life_days": 14,
+    "like_quantile": 0.9,
+    "price_basis": "recent",
+    "price_mult": 1.5,
+    "already_have": "near_dup",
+    "recent_days": 14,
+    "dup_quantile": 0.99
+  },
+  "proposed": {
+    "taste_half_life_days": 14.0,
+    "like_quantile": 0.8,
+    "price_basis": "recent",
+    "price_mult": 4.0,
+    "already_have": "near_dup",
+    "recent_days": 28,
+    "dup_quantile": 0.99
+  },
+  "q_range": [
+    0.8,
+    0.95
+  ],
+  "min_tpr": 0.9
+}

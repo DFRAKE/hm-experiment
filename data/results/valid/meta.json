@@ -1,0 +1,14 @@
+{
+  "split": "valid",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "near_threshold": 0.9,
+  "near_set_size_mean": 1049.602,
+  "near_set_frac_mean": 0.027189648472916616,
+  "n_sessions": 10000
+}

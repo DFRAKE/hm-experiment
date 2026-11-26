@@ -1,0 +1,166 @@
+$ HM_CONFIG=configs/rule-off__f2.yaml -m src.simulate --overwrite
+seed 0:   0%|          | 0/1112 [00:00<?, ?bot/s]seed 0:   3%|▎         | 35/1112 [00:05<02:38,  6.81bot/s]seed 0:   6%|▋         | 70/1112 [00:10<02:36,  6.64bot/s]seed 0:   9%|▉         | 104/1112 [00:16<02:43,  6.16bot/s]seed 0:  12%|█▏        | 135/1112 [00:21<02:38,  6.14bot/s]seed 0:  15%|█▌        | 168/1112 [00:26<02:30,  6.29bot/s]seed 0:  18%|█▊        | 200/1112 [00:31<02:27,  6.18bot/s]seed 0:  21%|██        | 233/1112 [00:37<02:20,  6.28bot/s]seed 0:  24%|██▍       | 267/1112 [00:42<02:12,  6.39bot/s]seed 0:  27%|██▋       | 301/1112 [00:47<02:05,  6.48bot/s]seed 0:  30%|███       | 335/1112 [00:52<01:58,  6.54bot/s]seed 0:  33%|███▎      | 368/1112 [00:57<01:55,  6.45bot/s]seed 0:  36%|███▌      | 401/1112 [01:02<01:49,  6.49bot/s]seed 0:  39%|███▉      | 434/1112 [01:07<01:44,  6.50bot/s]seed 0:  42%|████▏     | 467/1112 [01:13<01:40,  6.39bot/s]seed 0:  45%|████▌     | 501/1112 [01:18<01:34,  6.45bot/s]seed 0:  48%|████▊     | 534/1112 [01:23<01:29,  6.44bot/s]seed 0:  51%|█████     | 568/1112 [01:28<01:23,  6.51bot/s]seed 0:  54%|█████▍    | 602/1112 [01:33<01:17,  6.59bot/s]seed 0:  57%|█████▋    | 636/1112 [01:38<01:12,  6.60bot/s]seed 0:  60%|██████    | 670/1112 [01:43<01:06,  6.61bot/s]seed 0:  63%|██████▎   | 704/1112 [01:48<01:01,  6.63bot/s]seed 0:  66%|██████▋   | 738/1112 [01:54<00:58,  6.44bot/s]seed 0:  69%|██████▉   | 771/1112 [01:59<00:53,  6.37bot/s]seed 0:  72%|███████▏  | 803/1112 [02:04<00:48,  6.31bot/s]seed 0:  75%|███████▌  | 835/1112 [02:10<00:44,  6.27bot/s]seed 0:  78%|███████▊  | 867/1112 [02:15<00:39,  6.25bot/s]seed 0:  81%|████████  | 899/1112 [02:20<00:34,  6.25bot/s]seed 0:  84%|████████▎ | 931/1112 [02:25<00:29,  6.22bot/s]seed 0:  87%|████████▋ | 963/1112 [02:30<00:24,  6.19bot/s]seed 0:  89%|████████▉ | 994/1112 [02:35<00:19,  6.18bot/s]seed 0:  92%|█████████▏| 1025/1112 [02:41<00:14,  5.91bot/s]seed 0:  95%|█████████▍| 1056/1112 [02:46<00:09,  5.98bot/s]seed 0:  98%|█████████▊| 1087/1112 [02:51<00:04,  6.02bot/s]seed 0: 100%|██████████| 1112/1112 [02:56<00:00,  6.30bot/s]
+[bot-image_rec-text__rule-off__f2] seed 0: 1112 bots × 5 modes, 333,600 exposures, 180s | like rate (assigned) {'list': 0.494, 'list_v2': 0.518, 'pop': 0.49, 'swipe': 0.527, 'swipe_v2': 0.589}
+seed 1:   0%|          | 0/1112 [00:00<?, ?bot/s]seed 1:   3%|▎         | 31/1112 [00:05<02:59,  6.03bot/s]seed 1:   6%|▌         | 62/1112 [00:10<02:53,  6.05bot/s]seed 1:   8%|▊         | 93/1112 [00:15<02:46,  6.11bot/s]seed 1:  11%|█         | 124/1112 [00:20<02:47,  5.90bot/s]seed 1:  14%|█▍        | 155/1112 [00:25<02:39,  6.00bot/s]seed 1:  17%|█▋        | 186/1112 [00:30<02:34,  5.99bot/s]seed 1:  19%|█▉        | 216/1112 [00:36<02:30,  5.97bot/s]seed 1:  22%|██▏       | 247/1112 [00:41<02:24,  5.99bot/s]seed 1:  25%|██▌       | 278/1112 [00:46<02:17,  6.05bot/s]seed 1:  28%|██▊       | 310/1112 [00:51<02:11,  6.10bot/s]seed 1:  31%|███       | 342/1112 [00:56<02:05,  6.15bot/s]seed 1:  34%|███▎      | 373/1112 [01:01<02:02,  6.01bot/s]seed 1:  36%|███▋      | 404/1112 [01:06<01:56,  6.06bot/s]seed 1:  39%|███▉      | 435/1112 [01:12<01:53,  5.96bot/s]seed 1:  42%|████▏     | 466/1112 [01:17<01:47,  6.00bot/s]seed 1:  45%|████▍     | 497/1112 [01:22<01:42,  5.99bot/s]seed 1:  47%|████▋     | 527/1112 [01:27<01:39,  5.88bot/s]seed 1:  50%|█████     | 557/1112 [01:33<01:34,  5.87bot/s]seed 1:  53%|█████▎    | 588/1112 [01:38<01:27,  5.96bot/s]seed 1:  56%|█████▌    | 620/1112 [01:43<01:21,  6.03bot/s]seed 1:  59%|█████▊    | 651/1112 [01:48<01:16,  6.01bot/s]seed 1:  61%|██████▏   | 682/1112 [01:53<01:11,  6.00bot/s]seed 1:  64%|██████▍   | 713/1112 [01:58<01:07,  5.93bot/s]seed 1:  67%|██████▋   | 743/1112 [02:04<01:02,  5.91bot/s]seed 1:  70%|██████▉   | 773/1112 [02:09<00:57,  5.90bot/s]seed 1:  72%|███████▏  | 804/1112 [02:14<00:51,  5.98bot/s]seed 1:  75%|███████▌  | 834/1112 [02:19<00:46,  5.95bot/s]seed 1:  78%|███████▊  | 864/1112 [02:24<00:41,  5.96bot/s]seed 1:  80%|████████  | 895/1112 [02:29<00:35,  6.03bot/s]seed 1:  83%|████████▎ | 926/1112 [02:34<00:30,  6.07bot/s]seed 1:  86%|████████▌ | 957/1112 [02:39<00:25,  6.06bot/s]seed 1:  89%|████████▉ | 989/1112 [02:44<00:20,  6.10bot/s]seed 1:  92%|█████████▏| 1020/1112 [02:49<00:15,  6.10bot/s]seed 1:  95%|█████████▍| 1051/1112 [02:54<00:10,  6.09bot/s]seed 1:  97%|█████████▋| 1082/1112 [03:00<00:05,  5.85bot/s]seed 1: 100%|██████████| 1112/1112 [03:05<00:00,  5.82bot/s]seed 1: 100%|██████████| 1112/1112 [03:05<00:00,  5.98bot/s]
+[bot-image_rec-text__rule-off__f2] seed 1: 1112 bots × 5 modes, 333,600 exposures, 190s | like rate (assigned) {'list': 0.492, 'list_v2': 0.525, 'pop': 0.489, 'swipe': 0.536, 'swipe_v2': 0.59}
+seed 2:   0%|          | 0/1112 [00:00<?, ?bot/s]seed 2:   3%|▎         | 30/1112 [00:05<03:05,  5.83bot/s]seed 2:   5%|▌         | 60/1112 [00:10<03:07,  5.61bot/s]seed 2:   8%|▊         | 91/1112 [00:15<02:53,  5.87bot/s]seed 2:  11%|█         | 123/1112 [00:20<02:43,  6.04bot/s]seed 2:  14%|█▍        | 154/1112 [00:25<02:38,  6.06bot/s]seed 2:  17%|█▋        | 185/1112 [00:31<02:36,  5.92bot/s]seed 2:  20%|█▉        | 217/1112 [00:36<02:28,  6.04bot/s]seed 2:  22%|██▏       | 249/1112 [00:41<02:20,  6.13bot/s]seed 2:  25%|██▌       | 280/1112 [00:46<02:17,  6.06bot/s]seed 2:  28%|██▊       | 311/1112 [00:52<02:17,  5.81bot/s]seed 2:  31%|███       | 342/1112 [00:57<02:10,  5.91bot/s]seed 2:  34%|███▎      | 375/1112 [01:02<02:01,  6.08bot/s]seed 2:  37%|███▋      | 406/1112 [01:07<01:56,  6.06bot/s]seed 2:  39%|███▉      | 438/1112 [01:12<01:50,  6.10bot/s]seed 2:  42%|████▏     | 471/1112 [01:18<01:43,  6.21bot/s]seed 2:  45%|████▌     | 505/1112 [01:23<01:35,  6.34bot/s]seed 2:  48%|████▊     | 537/1112 [01:28<01:32,  6.24bot/s]seed 2:  51%|█████▏    | 570/1112 [01:33<01:25,  6.33bot/s]seed 2:  54%|█████▍    | 603/1112 [01:38<01:20,  6.35bot/s]seed 2:  57%|█████▋    | 635/1112 [01:43<01:16,  6.27bot/s]seed 2:  60%|█████▉    | 667/1112 [01:49<01:12,  6.15bot/s]seed 2:  63%|██████▎   | 698/1112 [01:54<01:08,  6.08bot/s]seed 2:  66%|██████▌   | 730/1112 [01:59<01:02,  6.12bot/s]seed 2:  68%|██████▊   | 761/1112 [02:05<00:58,  6.05bot/s]seed 2:  71%|███████   | 792/1112 [02:11<00:55,  5.72bot/s]seed 2:  74%|███████▍  | 823/1112 [02:16<00:49,  5.84bot/s]seed 2:  77%|███████▋  | 854/1112 [02:21<00:43,  5.90bot/s]seed 2:  80%|███████▉  | 885/1112 [02:26<00:38,  5.97bot/s]seed 2:  82%|████████▏ | 915/1112 [02:31<00:33,  5.92bot/s]seed 2:  85%|████████▍ | 945/1112 [02:36<00:28,  5.92bot/s]seed 2:  88%|████████▊ | 975/1112 [02:41<00:23,  5.93bot/s]seed 2:  90%|█████████ | 1005/1112 [02:46<00:18,  5.93bot/s]seed 2:  93%|█████████▎| 1035/1112 [02:51<00:13,  5.88bot/s]seed 2:  96%|█████████▌| 1066/1112 [02:57<00:07,  5.93bot/s]seed 2:  99%|█████████▊| 1096/1112 [03:02<00:02,  5.90bot/s]seed 2: 100%|██████████| 1112/1112 [03:04<00:00,  6.02bot/s]
+[bot-image_rec-text__rule-off__f2] seed 2: 1112 bots × 5 modes, 333,600 exposures, 189s | like rate (assigned) {'list': 0.487, 'list_v2': 0.519, 'pop': 0.495, 'swipe': 0.535, 'swipe_v2': 0.589}
+seed 3:   0%|          | 0/1112 [00:00<?, ?bot/s]seed 3:   3%|▎         | 29/1112 [00:05<03:09,  5.71bot/s]seed 3:   5%|▌         | 59/1112 [00:10<03:00,  5.82bot/s]seed 3:   8%|▊         | 89/1112 [00:15<02:53,  5.89bot/s]seed 3:  11%|█         | 120/1112 [00:20<02:45,  5.99bot/s]seed 3:  13%|█▎        | 150/1112 [00:25<02:40,  5.98bot/s]seed 3:  16%|█▋        | 181/1112 [00:30<02:35,  5.99bot/s]seed 3:  19%|█▉        | 212/1112 [00:35<02:30,  6.00bot/s]seed 3:  22%|██▏       | 242/1112 [00:40<02:25,  5.99bot/s]seed 3:  25%|██▍       | 273/1112 [00:45<02:18,  6.05bot/s]seed 3:  27%|██▋       | 304/1112 [00:50<02:13,  6.07bot/s]seed 3:  30%|███       | 335/1112 [00:55<02:07,  6.09bot/s]seed 3:  33%|███▎      | 367/1112 [01:00<02:01,  6.13bot/s]seed 3:  36%|███▌      | 398/1112 [01:05<01:56,  6.14bot/s]seed 3:  39%|███▊      | 429/1112 [01:11<01:56,  5.87bot/s]seed 3:  41%|████▏     | 460/1112 [01:16<01:50,  5.92bot/s]seed 3:  44%|████▍     | 491/1112 [01:21<01:44,  5.96bot/s]seed 3:  47%|████▋     | 522/1112 [01:27<01:38,  5.99bot/s]seed 3:  50%|████▉     | 553/1112 [01:32<01:33,  6.00bot/s]seed 3:  53%|█████▎    | 585/1112 [01:37<01:26,  6.09bot/s]seed 3:  55%|█████▌    | 617/1112 [01:42<01:20,  6.16bot/s]seed 3:  58%|█████▊    | 648/1112 [01:47<01:15,  6.16bot/s]seed 3:  61%|██████    | 679/1112 [01:52<01:11,  6.08bot/s]seed 3:  64%|██████▍   | 710/1112 [01:57<01:06,  6.06bot/s]seed 3:  67%|██████▋   | 741/1112 [02:02<01:00,  6.08bot/s]seed 3:  69%|██████▉   | 772/1112 [02:07<00:55,  6.11bot/s]seed 3:  72%|███████▏  | 804/1112 [02:12<00:49,  6.18bot/s]seed 3:  75%|███████▌  | 835/1112 [02:18<00:45,  6.13bot/s]seed 3:  78%|███████▊  | 866/1112 [02:23<00:40,  6.13bot/s]seed 3:  81%|████████  | 897/1112 [02:28<00:36,  5.94bot/s]seed 3:  83%|████████▎ | 928/1112 [02:33<00:30,  5.98bot/s]seed 3:  86%|████████▌ | 959/1112 [02:38<00:25,  6.00bot/s]seed 3:  89%|████████▉ | 991/1112 [02:44<00:19,  6.09bot/s]seed 3:  92%|█████████▏| 1022/1112 [02:49<00:15,  5.99bot/s]seed 3:  95%|█████████▍| 1052/1112 [02:55<00:10,  5.75bot/s]seed 3:  97%|█████████▋| 1081/1112 [03:00<00:05,  5.76bot/s]seed 3: 100%|██████████| 1112/1112 [03:05<00:00,  5.85bot/s]seed 3: 100%|██████████| 1112/1112 [03:05<00:00,  6.00bot/s]
+[bot-image_rec-text__rule-off__f2] seed 3: 1112 bots × 5 modes, 333,600 exposures, 189s | like rate (assigned) {'list': 0.489, 'list_v2': 0.521, 'pop': 0.493, 'swipe': 0.529, 'swipe_v2': 0.593}
+seed 4:   0%|          | 0/1112 [00:00<?, ?bot/s]seed 4:   3%|▎         | 31/1112 [00:05<02:57,  6.08bot/s]seed 4:   6%|▌         | 63/1112 [00:10<02:47,  6.25bot/s]seed 4:   9%|▊         | 95/1112 [00:15<02:42,  6.25bot/s]seed 4:  11%|█▏        | 127/1112 [00:20<02:36,  6.30bot/s]seed 4:  14%|█▍        | 159/1112 [00:25<02:31,  6.28bot/s]seed 4:  17%|█▋        | 191/1112 [00:30<02:28,  6.20bot/s]seed 4:  20%|██        | 223/1112 [00:36<02:31,  5.89bot/s]seed 4:  23%|██▎       | 255/1112 [00:41<02:23,  5.98bot/s]seed 4:  26%|██▌       | 287/1112 [00:46<02:15,  6.07bot/s]seed 4:  29%|██▊       | 319/1112 [00:52<02:08,  6.15bot/s]seed 4:  32%|███▏      | 351/1112 [00:57<02:02,  6.21bot/s]seed 4:  35%|███▍      | 384/1112 [01:02<01:56,  6.26bot/s]seed 4:  37%|███▋      | 416/1112 [01:07<01:51,  6.22bot/s]seed 4:  40%|████      | 448/1112 [01:12<01:48,  6.13bot/s]seed 4:  43%|████▎     | 480/1112 [01:18<01:42,  6.15bot/s]seed 4:  46%|████▌     | 512/1112 [01:23<01:37,  6.18bot/s]seed 4:  49%|████▉     | 543/1112 [01:28<01:34,  6.00bot/s]seed 4:  52%|█████▏    | 575/1112 [01:33<01:28,  6.06bot/s]seed 4:  55%|█████▍    | 607/1112 [01:38<01:21,  6.16bot/s]seed 4:  57%|█████▋    | 639/1112 [01:43<01:16,  6.18bot/s]seed 4:  60%|██████    | 671/1112 [01:49<01:11,  6.21bot/s]seed 4:  63%|██████▎   | 703/1112 [01:54<01:06,  6.12bot/s]seed 4:  66%|██████▌   | 735/1112 [01:59<01:01,  6.17bot/s]seed 4:  69%|██████▉   | 766/1112 [02:04<00:56,  6.12bot/s]seed 4:  72%|███████▏  | 797/1112 [02:09<00:51,  6.13bot/s]seed 4:  75%|███████▍  | 829/1112 [02:14<00:45,  6.17bot/s]seed 4:  77%|███████▋  | 860/1112 [02:20<00:41,  6.11bot/s]seed 4:  80%|████████  | 893/1112 [02:25<00:35,  6.19bot/s]seed 4:  83%|████████▎ | 925/1112 [02:30<00:29,  6.24bot/s]seed 4:  86%|████████▌ | 957/1112 [02:35<00:25,  6.09bot/s]seed 4:  89%|████████▉ | 990/1112 [02:40<00:19,  6.19bot/s]seed 4:  92%|█████████▏| 1022/1112 [02:46<00:14,  6.22bot/s]seed 4:  95%|█████████▍| 1054/1112 [02:51<00:09,  5.96bot/s]seed 4:  97%|█████████▋| 1084/1112 [02:57<00:04,  5.75bot/s]seed 4: 100%|██████████| 1112/1112 [03:02<00:00,  6.09bot/s]
+[bot-image_rec-text__rule-off__f2] seed 4: 1112 bots × 5 modes, 333,600 exposures, 186s | like rate (assigned) {'list': 0.49, 'list_v2': 0.519, 'pop': 0.488, 'swipe': 0.534, 'swipe_v2': 0.59}
+$ HM_CONFIG=configs/rule-off__f2.yaml -m src.scoring score --split valid
+/Users/seungjinkim/hm-experiment/src/scoring.py:163: RuntimeWarning: Mean of empty slice
+  return x[rng.integers(0, len(x), size=(n_boot, len(x)))].mean(axis=1)
+/Users/seungjinkim/hm-experiment/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:134: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/Users/seungjinkim/hm-experiment/src/scoring.py:168: RuntimeWarning: Mean of empty slice
+  return float(np.nanmean(xs) - np.nanmean(xl)), *np.percentile(d, [2.5, 97.5]).tolist()
+/Users/seungjinkim/hm-experiment/src/scoring.py:163: RuntimeWarning: Mean of empty slice
+  return x[rng.integers(0, len(x), size=(n_boot, len(x)))].mean(axis=1)
+/Users/seungjinkim/hm-experiment/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:134: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/Users/seungjinkim/hm-experiment/src/scoring.py:225: RuntimeWarning: Mean of empty slice
+  pa, pb = float(np.nanmean(paired.loc[ma, col])), float(np.nanmean(paired.loc[mb, col]))
+/Users/seungjinkim/hm-experiment/src/scoring.py:227: RuntimeWarning: Mean of empty slice
+  "a_mode": ma, "b_mode": mb, "a": np.nanmean(xa), "b": np.nanmean(xb),
+/Users/seungjinkim/hm-experiment/src/scoring.py:231: RuntimeWarning: Mean of empty slice
+  "paired_a": pa, "paired_b": pb, "paired_diff": float(np.nanmean(pd_)),
+/Users/seungjinkim/hm-experiment/src/scoring.py:168: RuntimeWarning: Mean of empty slice
+  return float(np.nanmean(xs) - np.nanmean(xl)), *np.percentile(d, [2.5, 97.5]).tolist()
+/Users/seungjinkim/hm-experiment/src/scoring.py:163: RuntimeWarning: Mean of empty slice
+  return x[rng.integers(0, len(x), size=(n_boot, len(x)))].mean(axis=1)
+/Users/seungjinkim/hm-experiment/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:134: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/Users/seungjinkim/hm-experiment/src/scoring.py:225: RuntimeWarning: Mean of empty slice
+  pa, pb = float(np.nanmean(paired.loc[ma, col])), float(np.nanmean(paired.loc[mb, col]))
+/Users/seungjinkim/hm-experiment/src/scoring.py:227: RuntimeWarning: Mean of empty slice
+  "a_mode": ma, "b_mode": mb, "a": np.nanmean(xa), "b": np.nanmean(xb),
+/Users/seungjinkim/hm-experiment/src/scoring.py:231: RuntimeWarning: Mean of empty slice
+  "paired_a": pa, "paired_b": pb, "paired_diff": float(np.nanmean(pd_)),
+/Users/seungjinkim/hm-experiment/src/scoring.py:168: RuntimeWarning: Mean of empty slice
+  return float(np.nanmean(xs) - np.nanmean(xl)), *np.percentile(d, [2.5, 97.5]).tolist()
+/Users/seungjinkim/hm-experiment/src/scoring.py:163: RuntimeWarning: Mean of empty slice
+  return x[rng.integers(0, len(x), size=(n_boot, len(x)))].mean(axis=1)
+/Users/seungjinkim/hm-experiment/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:134: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/Users/seungjinkim/hm-experiment/src/scoring.py:225: RuntimeWarning: Mean of empty slice
+  pa, pb = float(np.nanmean(paired.loc[ma, col])), float(np.nanmean(paired.loc[mb, col]))
+/Users/seungjinkim/hm-experiment/src/scoring.py:227: RuntimeWarning: Mean of empty slice
+  "a_mode": ma, "b_mode": mb, "a": np.nanmean(xa), "b": np.nanmean(xb),
+/Users/seungjinkim/hm-experiment/src/scoring.py:231: RuntimeWarning: Mean of empty slice
+  "paired_a": pa, "paired_b": pb, "paired_diff": float(np.nanmean(pd_)),
+/Users/seungjinkim/hm-experiment/src/scoring.py:163: RuntimeWarning: Mean of empty slice
+  return x[rng.integers(0, len(x), size=(n_boot, len(x)))].mean(axis=1)
+/Users/seungjinkim/hm-experiment/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:134: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/Users/seungjinkim/hm-experiment/src/scoring.py:168: RuntimeWarning: Mean of empty slice
+  return float(np.nanmean(xs) - np.nanmean(xl)), *np.percentile(d, [2.5, 97.5]).tolist()
+/Users/seungjinkim/hm-experiment/src/scoring.py:163: RuntimeWarning: Mean of empty slice
+  return x[rng.integers(0, len(x), size=(n_boot, len(x)))].mean(axis=1)
+/Users/seungjinkim/hm-experiment/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:134: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/Users/seungjinkim/hm-experiment/src/scoring.py:225: RuntimeWarning: Mean of empty slice
+  pa, pb = float(np.nanmean(paired.loc[ma, col])), float(np.nanmean(paired.loc[mb, col]))
+/Users/seungjinkim/hm-experiment/src/scoring.py:227: RuntimeWarning: Mean of empty slice
+  "a_mode": ma, "b_mode": mb, "a": np.nanmean(xa), "b": np.nanmean(xb),
+/Users/seungjinkim/hm-experiment/src/scoring.py:231: RuntimeWarning: Mean of empty slice
+  "paired_a": pa, "paired_b": pb, "paired_diff": float(np.nanmean(pd_)),
+/Users/seungjinkim/hm-experiment/src/scoring.py:168: RuntimeWarning: Mean of empty slice
+  return float(np.nanmean(xs) - np.nanmean(xl)), *np.percentile(d, [2.5, 97.5]).tolist()
+/Users/seungjinkim/hm-experiment/src/scoring.py:163: RuntimeWarning: Mean of empty slice
+  return x[rng.integers(0, len(x), size=(n_boot, len(x)))].mean(axis=1)
+/Users/seungjinkim/hm-experiment/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:134: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/Users/seungjinkim/hm-experiment/src/scoring.py:225: RuntimeWarning: Mean of empty slice
+  pa, pb = float(np.nanmean(paired.loc[ma, col])), float(np.nanmean(paired.loc[mb, col]))
+/Users/seungjinkim/hm-experiment/src/scoring.py:227: RuntimeWarning: Mean of empty slice
+  "a_mode": ma, "b_mode": mb, "a": np.nanmean(xa), "b": np.nanmean(xb),
+/Users/seungjinkim/hm-experiment/src/scoring.py:231: RuntimeWarning: Mean of empty slice
+  "paired_a": pa, "paired_b": pb, "paired_diff": float(np.nanmean(pd_)),
+/Users/seungjinkim/hm-experiment/src/scoring.py:168: RuntimeWarning: Mean of empty slice
+  return float(np.nanmean(xs) - np.nanmean(xl)), *np.percentile(d, [2.5, 97.5]).tolist()
+/Users/seungjinkim/hm-experiment/src/scoring.py:163: RuntimeWarning: Mean of empty slice
+  return x[rng.integers(0, len(x), size=(n_boot, len(x)))].mean(axis=1)
+/Users/seungjinkim/hm-experiment/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:134: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/Users/seungjinkim/hm-experiment/src/scoring.py:225: RuntimeWarning: Mean of empty slice
+  pa, pb = float(np.nanmean(paired.loc[ma, col])), float(np.nanmean(paired.loc[mb, col]))
+/Users/seungjinkim/hm-experiment/src/scoring.py:227: RuntimeWarning: Mean of empty slice
+  "a_mode": ma, "b_mode": mb, "a": np.nanmean(xa), "b": np.nanmean(xb),
+/Users/seungjinkim/hm-experiment/src/scoring.py:231: RuntimeWarning: Mean of empty slice
+  "paired_a": pa, "paired_b": pb, "paired_diff": float(np.nanmean(pd_)),
+{"experiment": "bot-image_rec-text__rule-off__f2", "split": "valid", "seeds": [0, 1, 2, 3, 4], "near_threshold": 0.9, "near_set_size_mean": 1054.9694244604316, "near_set_frac_mean": 0.027377625589360865, "n_sessions": 27800, "modes": ["list", "list_v2", "pop", "swipe", "swipe_v2"], "sim_max_dev": 6.274414062756861e-07, "rule_vs_observed_agree": 0.9001223021582734}
+
+[list_vs_swipe] 취향 회복도 (메인)  (a=list, b=swipe)
+          metric       a       b   diff  ci_low  ci_high  seed_diff_min  seed_diff_max  paired_diff  paired_ci_low  paired_ci_high  lift_a  lift_b
+        pref_all  0.4882  0.5407 0.0525  0.0311   0.0751         0.0480         0.0577       0.0538         0.0441          0.0622  1.0000  1.1101
+    final_like20 16.8025 17.2086 0.4061  0.0097   0.8044         0.2482         0.5629       0.4272         0.2481          0.6119  1.6813  1.7242
+final_like20_new  0.0000  2.3932 2.3932  2.2363   2.5633         2.3129         2.4640       2.3701         2.2495          2.4865     NaN     NaN
+   final_taste20 16.8025 17.2086 0.4061  0.0119   0.7926         0.2482         0.5629       0.4272         0.2507          0.6178  1.6813  1.7242
+     repeat_attr     NaN     NaN    NaN     NaN      NaN            NaN            NaN          NaN            NaN             NaN     NaN     NaN
+    repeat_price     NaN     NaN    NaN     NaN      NaN            NaN            NaN          NaN            NaN             NaN     NaN     NaN
+     repeat_type     NaN     NaN    NaN     NaN      NaN            NaN            NaN          NaN            NaN             NaN     NaN     NaN
+      first_pref  1.9478  3.3022 1.3543  0.9942   1.7366         1.2234         1.4640       1.2759         1.0641          1.4889  1.0000  1.6256
+      first_like  1.8885  2.7388 0.8504  0.6597   1.0616         0.7140         0.9784       0.7626         0.6554          0.8745  0.9989  1.3953
+
+[list_vs_swipe] 선호율 곡선  (a=list, b=swipe)
+ metric      a      b    diff  ci_low  ci_high  seed_diff_min  seed_diff_max  paired_diff  paired_ci_low  paired_ci_high  lift_a  lift_b
+pref_10 0.5621 0.4060 -0.1560 -0.1839  -0.1255        -0.1592        -0.1545      -0.1546        -0.1678         -0.1417     1.0  0.7254
+pref_20 0.4327 0.4324 -0.0003 -0.0250   0.0242        -0.0040         0.0018      -0.0024        -0.0167          0.0126     1.0  0.9944
+pref_30 0.4508 0.5989  0.1481  0.1233   0.1721         0.1394         0.1563       0.1486         0.1356          0.1615     1.0  1.3277
+pref_40 0.5705 0.6004  0.0299  0.0054   0.0560         0.0205         0.0451       0.0301         0.0173          0.0408     1.0  1.0526
+pref_50 0.4294 0.6025  0.1731  0.1489   0.1973         0.1631         0.1844       0.1790         0.1667          0.1915     1.0  1.4213
+pref_60 0.4839 0.6040  0.1201  0.0933   0.1448         0.1072         0.1336       0.1221         0.1083          0.1350     1.0  1.2523
+
+[list_vs_swipe] 다음 주 구매 (현실 점검)  (a=list, b=swipe)
+       metric      a      b    diff  ci_low  ci_high  seed_diff_min  seed_diff_max  paired_diff  paired_ci_low  paired_ci_high  lift_a  lift_b
+   near_hit20 0.5129 0.2442 -0.2687 -0.3195  -0.2183        -0.2806        -0.2500      -0.2932        -0.3218         -0.2660  1.0170  0.4510
+  exact_hit20 0.0766 0.0183 -0.0583 -0.0791  -0.0388        -0.0629        -0.0450      -0.0653        -0.0809         -0.0518  0.9375  0.1812
+near_recall20 0.0020 0.0025  0.0005 -0.0000   0.0011         0.0004         0.0005       0.0002        -0.0001          0.0006  1.0907  1.2126
+
+[list_v2_vs_swipe_v2] 취향 회복도 (메인)  (a=list_v2, b=swipe_v2)
+          metric       a       b   diff  ci_low  ci_high  seed_diff_min  seed_diff_max  paired_diff  paired_ci_low  paired_ci_high  lift_a  lift_b
+        pref_all  0.5261  0.6139 0.0878  0.0653   0.1114         0.0838         0.0902       0.0877         0.0833          0.0921  1.0778  1.2572
+    final_like20 14.8831 18.3417 3.4586  3.0541   3.8768         3.4245         3.5522       3.4831         3.3124          3.6616  1.4944  1.8439
+final_like20_new  0.9921  1.1086 0.1165 -0.0191   0.2633         0.0126         0.1960       0.1099         0.0140          0.2058     NaN     NaN
+   final_taste20 14.8831 18.3417 3.4586  3.0140   3.8654         3.4245         3.5522       3.4831         3.3129          3.6619  1.4944  1.8439
+     repeat_attr     NaN     NaN    NaN     NaN      NaN            NaN            NaN          NaN            NaN             NaN     NaN     NaN
+    repeat_price     NaN     NaN    NaN     NaN      NaN            NaN            NaN          NaN            NaN             NaN     NaN     NaN
+     repeat_type     NaN     NaN    NaN     NaN      NaN            NaN            NaN          NaN            NaN             NaN     NaN     NaN
+      first_pref  1.9554  2.1878 0.2324 -0.1145   0.6035         0.0667         0.2577       0.0108        -0.0302          0.0531  1.0088  1.0141
+      first_like  1.8838  1.9252 0.0414 -0.1119   0.1766        -0.0198         0.0953      -0.0401        -0.0824         -0.0025  1.0051  0.9843
+
+[list_v2_vs_swipe_v2] 선호율 곡선  (a=list_v2, b=swipe_v2)
+ metric      a      b   diff  ci_low  ci_high  seed_diff_min  seed_diff_max  paired_diff  paired_ci_low  paired_ci_high  lift_a  lift_b
+pref_10 0.5621 0.5638 0.0018 -0.0248   0.0297        -0.0007         0.0045       0.0000         0.0000          0.0000  1.0000  1.0000
+pref_20 0.4327 0.4347 0.0021 -0.0271   0.0309        -0.0009         0.0038       0.0000         0.0000          0.0000  1.0000  1.0000
+pref_30 0.5429 0.6683 0.1254  0.0976   0.1518         0.1214         0.1324       0.1263         0.1171          0.1360  1.1957  1.4744
+pref_40 0.5391 0.6655 0.1265  0.1020   0.1528         0.1192         0.1336       0.1226         0.1145          0.1298  0.9494  1.1636
+pref_50 0.5539 0.6747 0.1208  0.0933   0.1462         0.1131         0.1281       0.1225         0.1127          0.1325  1.3043  1.5926
+pref_60 0.5259 0.6760 0.1501  0.1272   0.1737         0.1374         0.1626       0.1545         0.1453          0.1631  1.0806  1.3999
+
+[list_v2_vs_swipe_v2] 다음 주 구매 (현실 점검)  (a=list_v2, b=swipe_v2)
+       metric      a      b    diff  ci_low  ci_high  seed_diff_min  seed_diff_max  paired_diff  paired_ci_low  paired_ci_high  lift_a  lift_b
+   near_hit20 0.3709 0.3187 -0.0522 -0.1043   0.0007        -0.0665        -0.0360      -0.0558        -0.0730         -0.0383  0.7219  0.6142
+  exact_hit20 0.0601 0.0719  0.0119 -0.0155   0.0381         0.0036         0.0180      -0.0056        -0.0162          0.0058  0.8146  0.7500
+near_recall20 0.0029 0.0029 -0.0001 -0.0009   0.0008        -0.0002         0.0001      -0.0002        -0.0005          0.0001  1.5462  1.4375
+
+skip reasons (assigned):
+ reason           not_my_taste
+group    set_no              
+list     1                1.0
+         2                1.0
+         3                1.0
+list_v2  1                1.0
+         2                1.0
+         3                1.0
+pop      1                1.0
+         2                1.0
+         3                1.0
+swipe    1                1.0
+         2                1.0
+         3                1.0
+swipe_v2 1                1.0
+         2                1.0
+         3                1.0

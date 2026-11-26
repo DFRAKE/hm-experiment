@@ -1,0 +1,24 @@
+{
+  "experiment": "bot-image_rec-text__likeq-0p7__price-2",
+  "split": "valid",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "near_threshold": 0.9,
+  "near_set_size_mean": 1047.604,
+  "near_set_frac_mean": 0.027186484662895107,
+  "n_sessions": 25000,
+  "modes": [
+    "list",
+    "list_v2",
+    "pop",
+    "swipe",
+    "swipe_v2"
+  ],
+  "sim_max_dev": 6.426200866993526e-07,
+  "rule_vs_observed_agree": 0.9002613333333334
+}

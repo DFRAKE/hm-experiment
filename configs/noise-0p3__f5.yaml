@@ -1,0 +1,95 @@
+# 자동 생성 (scripts/sweep.py, experiments.yaml): config.yaml + {'bot_rule.noise': 0.3, 'bots.table': 'bot_folds/bots_f5.parquet'}
+paths:
+  raw: data/raw
+  interim: data/interim
+  results: data/results
+periods:
+  cut_start: '2020-07-01'
+  train:
+  - '2020-07-01'
+  - '2020-09-08'
+  valid:
+  - '2020-09-09'
+  - '2020-09-15'
+  test:
+  - '2020-09-16'
+  - '2020-09-22'
+read:
+  chunksize: 1000000
+bots:
+  n_bots: 1000
+  seed: 0
+  min_train_purchases: 5
+  max_train_purchases: 100
+  min_valid_purchases: 1
+  min_test_purchases: 1
+  count_bins:
+  - 5
+  - 10
+  - 20
+  min_stratum_size: 10
+  smd_threshold: 0.1
+  table: bot_folds/bots_f5.parquet
+pool:
+  popularity_window:
+  - '2020-09-02'
+  - '2020-09-08'
+embed:
+  model: intfloat/multilingual-e5-small
+  dim: 384
+  batch_size: 64
+  threads: null
+embed_image:
+  model: patrickjohncyh/fashion-clip
+  dim: 512
+  batch_size: 32
+  device: auto
+experiment:
+  bot_space: image
+  rec_space: text
+  variant: noise-0p3__f5
+bot_rule:
+  taste_half_life_days: 14
+  like_sample: 2000
+  like_quantile: 0.8
+  price_mult: 4.0
+  price_basis: recent
+  price_recent_days: 14
+  recent_days: 28
+  already_have: near_dup
+  dup_quantile: 0.99
+  noise: 0.3
+session:
+  exposure: 60
+  final_k: 20
+  seeds:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+recommender:
+  neg_weight: 0.3
+  tag_start: 50
+  tag_like: 10
+  tag_not_my_taste: -5
+  w_cos: 0.7
+  w_tag: 0.3
+  n_variation: 4
+  n_explore: 2
+  w_pop: 0.0
+scoring:
+  near_threshold: 0.9
+  n_boot: 1000
+  bootstrap_seed: 0
+recommender_v2:
+  neg_weight: 0.3
+  tag_start: 50
+  tag_like: 10
+  tag_not_my_taste: -5
+  w_cos: 0.7
+  w_tag: 0.3
+  n_variation: 4
+  n_explore: 2
+  w_pop: 0.1
+  list_insert: 6

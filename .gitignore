@@ -1,0 +1,18 @@
+# H&M 대회 데이터는 Kaggle 규칙상 다시 배포하지 않는다 (원본 CSV, 사진, 고객 ID, 그로부터 만든 중간 파일)
+data/raw/
+data/interim/
+*.zip
+# 세션별 결과에는 고객 ID(해시)가 들어 있어 올리지 않는다. 요약 CSV·표·그래프만 올린다.
+data/results/**/*.parquet
+
+# 인증 정보
+.kaggle/
+kaggle.json
+.env
+
+# 개발 환경
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store

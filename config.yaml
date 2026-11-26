@@ -1,0 +1,92 @@
+# hm_list_vs_swipe_experiment 설정. 값만 바꿔서 기간, 봇 수, 기준값을 조정한다.
+
+paths:
+  raw: data/raw
+  interim: data/interim
+  results: data/results
+
+periods:                       # 양 끝 날짜 포함
+  cut_start: "2020-07-01"      # 3.2: 이 날짜 이후만 남김
+  train: ["2020-07-01", "2020-09-08"]
+  valid: ["2020-09-09", "2020-09-15"]
+  test:  ["2020-09-16", "2020-09-22"]   # 정답 주: 최종 채점에만 사용
+
+read:
+  chunksize: 1000000
+
+bots:
+  n_bots: 1000
+  seed: 0                      # 1,000명 뽑기 + A/B 배정
+  min_train_purchases: 5       # 3.3 조건 1
+  max_train_purchases: 100     # 3.3 조건 4 (재판매업자 제외)
+  min_valid_purchases: 1       # 3.3 조건 2
+  min_test_purchases: 1        # 3.3 조건 3
+  count_bins: [5, 10, 20]      # 5~9 / 10~19 / 20 이상
+  min_stratum_size: 10         # 이보다 작은 묶음은 인접 구매 수 구간과 합침
+  smd_threshold: 0.1
+
+pool:
+  popularity_window: ["2020-09-02", "2020-09-08"]   # 학습 기간 마지막 7일
+
+embed:
+  model: intfloat/multilingual-e5-small
+  dim: 384
+  batch_size: 64
+  threads: null                # null = CPU 코어 전부
+
+embed_image:                   # 명세 수정 v3: 상품 사진 임베딩
+  model: patrickjohncyh/fashion-clip
+  dim: 512
+  batch_size: 32
+  device: auto                 # auto = mps 있으면 mps, 없으면 cpu
+
+experiment:                    # 명세 수정 v3 (spec_amendment_v3.md)
+  bot_space: image             # 봇이 찜을 판단하는 좌표: image(FashionCLIP 사진) | text(e5 설명 문장)
+  rec_space: text              # 추천기가 쓰는 좌표: text(A안, 봇과 다른 자) | image(B안)
+                               # 둘 다 text 이면 원래 설계(v1·v2)와 같고, 결과 폴더도 원래 위치를 쓴다
+  variant: ""                  # 같은 좌표에서 설정만 바꾼 실행(민감도 분석)의 이름. 결과 폴더가 <좌표>__<이름> 으로 갈림
+
+bot_rule:                      # 4장
+  taste_half_life_days: 14     # 최근 구매일수록 가중치 ↑
+  like_sample: 2000            # like_th 계산용 무작위 상품 수
+  like_quantile: 0.80          # 상위 20% 값 (v3 보정, 2026-11-25. 원 설계 0.90)
+  price_mult: 4.0              # price_th = 기준 가격 × 배수 (v3 보정: 실제 산 옷 통과율 ≥ 90% 중 가장 엄격. 원 설계 1.5)
+  price_basis: recent          # 기준 가격: all = 학습 기간 전체 구매 중앙값(원 설계) | recent = 최근 price_recent_days 일 중앙값 (v3)
+  price_recent_days: 14
+  recent_days: 28              # 이미 있어요 비교 대상: 학습 기간 마지막 28일 구매 (v3 보정. 원 설계 14)
+  already_have: near_dup       # type = 최근 산 종류면 넘김(원 설계) | near_dup = 최근 산 같은 종류 옷과 사진이 거의 같을 때만 (v3)
+  dup_quantile: 0.99           # near_dup 기준: 같은 종류 무작위 두 상품 유사도의 이 분위수 이상이면 '거의 같은 옷'
+  noise: 0.1                   # 변덕 확률
+
+session:                       # 5장
+  exposure: 60                 # 봇 1명당 노출 상품 수 (20 × 3세트)
+  final_k: 20
+  seeds: [0, 1, 2, 3, 4]
+
+recommender:                   # EmbeddingTagRecommender 기준 구현
+  neg_weight: 0.3              # 사용자 벡터 = 찜 평균 − 0.3 × not_my_taste 평균
+  tag_start: 50
+  tag_like: 10
+  tag_not_my_taste: -5
+  w_cos: 0.7
+  w_tag: 0.3
+  n_variation: 4               # 세트 20장 = 취향 14 + 변형 4 + 탐색 2
+  n_explore: 2
+  w_pop: 0.0                   # 인기도 가중치. 명세 기준 구현은 0 (검증 주 진단용 변형에서만 > 0)
+
+scoring:                       # 6장
+  near_threshold: 0.90         # 근접 정답 코사인 기준. 검증 주 조정 결과 근접 정답 = 풀의 평균 2.7% (목표 1~3%) -> 0.90 고정
+  n_boot: 1000
+  bootstrap_seed: 0
+
+recommender_v2:                # 수정 설계 v2 (spec_amendment_v2.md): 목록형 A'와 스와이프형 B'가 같은 엔진·같은 값
+  neg_weight: 0.3
+  tag_start: 50
+  tag_like: 10
+  tag_not_my_taste: -5
+  w_cos: 0.7
+  w_tag: 0.3
+  n_variation: 4
+  n_explore: 2
+  w_pop: 0.1                   # 인기도 가중치. 검증 주 두 그룹 평균 취향 회복도(v3 메인 지표) 최대로 결정 (후보 0·0.1·0.3·0.5·1, 2026-11-25)
+  list_insert: 6               # A' 2·3페이지에 끼워 넣는 추천 상품 수

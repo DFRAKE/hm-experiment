@@ -1,0 +1,239 @@
+done      main   main                         메인 (config.yaml)
+done      factor wpop-0                       v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다) = 0.0
+run       factor wpop-0p05                    v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다) = 0.05
+run       factor wpop-0p2                     v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다) = 0.2
+done      factor wpop-0p3                     v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다) = 0.3
+done      factor wpop-0p5                     v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다) = 0.5
+run       factor wpop-0p75                    v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다) = 0.75
+done      factor wpop-1                       v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다) = 1.0
+run       factor wpop-2                       v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다) = 2.0
+done      factor negw-0                       추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2) = 0.0
+run       factor negw-0p15                    추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2) = 0.15
+done      factor negw-0p6                     추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2) = 0.6
+run       factor negw-1                       추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2) = 1.0
+done      factor explore-0                    세트 20장 중 탐색 상품 수 (스와이프·목록 v2) = 0
+run       factor explore-1                    세트 20장 중 탐색 상품 수 (스와이프·목록 v2) = 1
+run       factor explore-4                    세트 20장 중 탐색 상품 수 (스와이프·목록 v2) = 4
+done      factor explore-6                    세트 20장 중 탐색 상품 수 (스와이프·목록 v2) = 6
+run       factor explore-8                    세트 20장 중 탐색 상품 수 (스와이프·목록 v2) = 8
+run       factor variation-0                  세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2) = 0
+run       factor variation-2                  세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2) = 2
+run       factor variation-6                  세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2) = 6
+run       factor insert-0                     목록 v2 2·3페이지에 끼워 넣는 추천 상품 수 = 0
+run       factor insert-3                     목록 v2 2·3페이지에 끼워 넣는 추천 상품 수 = 3
+run       factor insert-10                    목록 v2 2·3페이지에 끼워 넣는 추천 상품 수 = 10
+done      factor noise-0                      봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률) = 0.0
+run       factor noise-0p05                   봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률) = 0.05
+run       factor noise-0p15                   봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률) = 0.15
+done      factor noise-0p2                    봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률) = 0.2
+run       factor noise-0p25                   봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률) = 0.25
+done      factor noise-0p3                    봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률) = 0.3
+run       factor noise-0p4                    봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률) = 0.4
+run       factor noise-0p5                    봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률) = 0.5
+run       factor likeq-0p6                    봇 까다로움 (찜 기준선 분위수, 높을수록 까다로움) = 0.6
+done      factor likeq-0p7                    봇 까다로움 (찜 기준선 분위수, 높을수록 까다로움) = 0.7
+run       factor likeq-0p75                   봇 까다로움 (찜 기준선 분위수, 높을수록 까다로움) = 0.75
+run       factor likeq-0p85                   봇 까다로움 (찜 기준선 분위수, 높을수록 까다로움) = 0.85
+done      factor likeq-0p9                    봇 까다로움 (찜 기준선 분위수, 높을수록 까다로움) = 0.9
+run       factor likeq-0p95                   봇 까다로움 (찜 기준선 분위수, 높을수록 까다로움) = 0.95
+run       factor halflife-3                   봇 취향 반감기 (일, 짧을수록 최근 구매 위주, inf = 모든 구매 같은 무게) = 3
+done      factor halflife-7                   봇 취향 반감기 (일, 짧을수록 최근 구매 위주, inf = 모든 구매 같은 무게) = 7
+run       factor halflife-30                  봇 취향 반감기 (일, 짧을수록 최근 구매 위주, inf = 모든 구매 같은 무게) = 30
+done      factor halflife-60                  봇 취향 반감기 (일, 짧을수록 최근 구매 위주, inf = 모든 구매 같은 무게) = 60
+run       factor halflife-inf                 봇 취향 반감기 (일, 짧을수록 최근 구매 위주, inf = 모든 구매 같은 무게) = inf
+run       factor price-1p5                    봇 가격 상한 배수 (작을수록 '비싸요'가 잦음, inf = 끔) = 1.5
+done      factor price-2                      봇 가격 상한 배수 (작을수록 '비싸요'가 잦음, inf = 끔) = 2.0
+run       factor price-3                      봇 가격 상한 배수 (작을수록 '비싸요'가 잦음, inf = 끔) = 3.0
+run       factor price-6                      봇 가격 상한 배수 (작을수록 '비싸요'가 잦음, inf = 끔) = 6.0
+run       factor price-inf                    봇 가격 상한 배수 (작을수록 '비싸요'가 잦음, inf = 끔) = inf
+run       factor dupq-0p95                    '이미 있어요' 기준 (거의 같은 옷 분위수, 낮을수록 잦음) = 0.95
+run       factor dupq-0p999                   '이미 있어요' 기준 (거의 같은 옷 분위수, 낮을수록 잦음) = 0.999
+run       factor dupdays-14                   '이미 있어요' 비교 기간 (최근 며칠 구매) = 14
+run       factor dupdays-56                   '이미 있어요' 비교 기간 (최근 며칠 구매) = 56
+done      preset rule-orig                    원 설계 봇 규칙 (실제 고객과 거의 안 맞음, J +0.04)
+done      preset rule-off                     '비싸요'·'이미 있어요' 끔 (취향만)
+done      preset rec-image                    B안: 추천기도 사진 좌표 (봇과 같은 자, 순환 구조 주의)
+run       preset price-basis-all              가격 기준을 학습 기간 전체 중앙값으로 (계절 반영 안 함, 배수 4 그대로)
+run       preset dup-type                     '이미 있어요' 원 설계 방식 (최근 산 종류면 무조건 넘김, 28일)
+run       preset tag-0                        추천 점수에서 태그 점수 끔 (사진·설명 유사도만, w_cos 1 / w_tag 0)
+run       preset tag-0p6                      추천 점수에서 태그 점수 비중 크게 (w_cos 0.4 / w_tag 0.6)
+run       grid   noise-0__explore-0           변덕 × 탐색 상품 수 = noise=0.0, explore=0
+run       grid   noise-0__explore-6           변덕 × 탐색 상품 수 = noise=0.0, explore=6
+run       grid   noise-0p2__explore-0         변덕 × 탐색 상품 수 = noise=0.2, explore=0
+run       grid   noise-0p2__explore-6         변덕 × 탐색 상품 수 = noise=0.2, explore=6
+run       grid   noise-0p3__explore-0         변덕 × 탐색 상품 수 = noise=0.3, explore=0
+run       grid   noise-0p3__explore-6         변덕 × 탐색 상품 수 = noise=0.3, explore=6
+run       grid   noise-0__likeq-0p7           변덕 × 까다로움 = noise=0.0, likeq=0.7
+run       grid   noise-0__likeq-0p9           변덕 × 까다로움 = noise=0.0, likeq=0.9
+run       grid   noise-0p3__likeq-0p7         변덕 × 까다로움 = noise=0.3, likeq=0.7
+run       grid   noise-0p3__likeq-0p9         변덕 × 까다로움 = noise=0.3, likeq=0.9
+run       grid   noise-0__price-2             변덕 × 가격 상한 = noise=0.0, price=2.0
+run       grid   noise-0p3__price-2           변덕 × 가격 상한 = noise=0.3, price=2.0
+run       grid   likeq-0p7__price-2           까다로움 × 가격 상한 = likeq=0.7, price=2.0
+run       grid   likeq-0p9__price-2           까다로움 × 가격 상한 = likeq=0.9, price=2.0
+run       grid   explore-0__wpop-0            탐색 상품 수 × v2 인기도 가중치 = explore=0, wpop=0.0
+run       grid   explore-0__wpop-0p3          탐색 상품 수 × v2 인기도 가중치 = explore=0, wpop=0.3
+run       grid   explore-0__wpop-1            탐색 상품 수 × v2 인기도 가중치 = explore=0, wpop=1.0
+run       grid   explore-6__wpop-0            탐색 상품 수 × v2 인기도 가중치 = explore=6, wpop=0.0
+run       grid   explore-6__wpop-0p3          탐색 상품 수 × v2 인기도 가중치 = explore=6, wpop=0.3
+run       grid   explore-6__wpop-1            탐색 상품 수 × v2 인기도 가중치 = explore=6, wpop=1.0
+run       fold   main__f1                     메인 (config.yaml)
+run       fold   main__f2                     메인 (config.yaml)
+run       fold   main__f3                     메인 (config.yaml)
+run       fold   main__f4                     메인 (config.yaml)
+run       fold   main__f5                     메인 (config.yaml)
+run       fold   main__f6                     메인 (config.yaml)
+run       fold   main__f7                     메인 (config.yaml)
+run       fold   noise-0p3__f1                봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률)
+run       fold   noise-0p3__f2                봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률)
+run       fold   noise-0p3__f3                봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률)
+run       fold   noise-0p3__f4                봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률)
+run       fold   noise-0p3__f5                봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률)
+run       fold   noise-0p3__f6                봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률)
+run       fold   noise-0p3__f7                봇 변덕 확률 (찜/넘김을 실수로 뒤집을 확률)
+run       fold   explore-6__f1                세트 20장 중 탐색 상품 수 (스와이프·목록 v2)
+run       fold   explore-6__f2                세트 20장 중 탐색 상품 수 (스와이프·목록 v2)
+run       fold   explore-6__f3                세트 20장 중 탐색 상품 수 (스와이프·목록 v2)
+run       fold   explore-6__f4                세트 20장 중 탐색 상품 수 (스와이프·목록 v2)
+run       fold   explore-6__f5                세트 20장 중 탐색 상품 수 (스와이프·목록 v2)
+run       fold   explore-6__f6                세트 20장 중 탐색 상품 수 (스와이프·목록 v2)
+run       fold   explore-6__f7                세트 20장 중 탐색 상품 수 (스와이프·목록 v2)
+run       fold   likeq-0p7__f1                봇 까다로움 (찜 기준선 분위수, 높을수록 까다로움)
+run       fold   likeq-0p7__f2                봇 까다로움 (찜 기준선 분위수, 높을수록 까다로움)
+run       fold   likeq-0p7__f3                봇 까다로움 (찜 기준선 분위수, 높을수록 까다로움)
+run       fold   likeq-0p7__f4                봇 까다로움 (찜 기준선 분위수, 높을수록 까다로움)
+run       fold   likeq-0p7__f5                봇 까다로움 (찜 기준선 분위수, 높을수록 까다로움)
+run       fold   likeq-0p7__f6                봇 까다로움 (찜 기준선 분위수, 높을수록 까다로움)
+run       fold   likeq-0p7__f7                봇 까다로움 (찜 기준선 분위수, 높을수록 까다로움)
+run       fold   price-2__f1                  봇 가격 상한 배수 (작을수록 '비싸요'가 잦음, inf = 끔)
+run       fold   price-2__f2                  봇 가격 상한 배수 (작을수록 '비싸요'가 잦음, inf = 끔)
+run       fold   price-2__f3                  봇 가격 상한 배수 (작을수록 '비싸요'가 잦음, inf = 끔)
+run       fold   price-2__f4                  봇 가격 상한 배수 (작을수록 '비싸요'가 잦음, inf = 끔)
+run       fold   price-2__f5                  봇 가격 상한 배수 (작을수록 '비싸요'가 잦음, inf = 끔)
+run       fold   price-2__f6                  봇 가격 상한 배수 (작을수록 '비싸요'가 잦음, inf = 끔)
+run       fold   price-2__f7                  봇 가격 상한 배수 (작을수록 '비싸요'가 잦음, inf = 끔)
+run       fold   rule-off__f1                 '비싸요'·'이미 있어요' 끔 (취향만)
+run       fold   rule-off__f2                 '비싸요'·'이미 있어요' 끔 (취향만)
+run       fold   rule-off__f3                 '비싸요'·'이미 있어요' 끔 (취향만)
+run       fold   rule-off__f4                 '비싸요'·'이미 있어요' 끔 (취향만)
+run       fold   rule-off__f5                 '비싸요'·'이미 있어요' 끔 (취향만)
+run       fold   rule-off__f6                 '비싸요'·'이미 있어요' 끔 (취향만)
+run       fold   rule-off__f7                 '비싸요'·'이미 있어요' 끔 (취향만)
+run       fold   rule-orig__f1                원 설계 봇 규칙 (실제 고객과 거의 안 맞음, J +0.04)
+run       fold   rule-orig__f2                원 설계 봇 규칙 (실제 고객과 거의 안 맞음, J +0.04)
+run       fold   rule-orig__f3                원 설계 봇 규칙 (실제 고객과 거의 안 맞음, J +0.04)
+run       fold   rule-orig__f4                원 설계 봇 규칙 (실제 고객과 거의 안 맞음, J +0.04)
+run       fold   rule-orig__f5                원 설계 봇 규칙 (실제 고객과 거의 안 맞음, J +0.04)
+run       fold   rule-orig__f6                원 설계 봇 규칙 (실제 고객과 거의 안 맞음, J +0.04)
+run       fold   rule-orig__f7                원 설계 봇 규칙 (실제 고객과 거의 안 맞음, J +0.04)
+run       fold   rec-image__f1                B안: 추천기도 사진 좌표 (봇과 같은 자, 순환 구조 주의)
+run       fold   rec-image__f2                B안: 추천기도 사진 좌표 (봇과 같은 자, 순환 구조 주의)
+run       fold   rec-image__f3                B안: 추천기도 사진 좌표 (봇과 같은 자, 순환 구조 주의)
+run       fold   rec-image__f4                B안: 추천기도 사진 좌표 (봇과 같은 자, 순환 구조 주의)
+run       fold   rec-image__f5                B안: 추천기도 사진 좌표 (봇과 같은 자, 순환 구조 주의)
+run       fold   rec-image__f6                B안: 추천기도 사진 좌표 (봇과 같은 자, 순환 구조 주의)
+run       fold   rec-image__f7                B안: 추천기도 사진 좌표 (봇과 같은 자, 순환 구조 주의)
+
+상태: {'done': 20, 'run': 115}
+돌릴 조건 115개, 동시 6개. 로그: data/results/sweep_logs/
+[1/115 | 경과 0.2시간] 끝 main__f5 (12.8분)
+[2/115 | 경과 0.2시간] 끝 main__f2 (12.8분)
+[3/115 | 경과 0.2시간] 끝 main__f1 (12.9분)
+[4/115 | 경과 0.2시간] 끝 main__f3 (12.9분)
+[5/115 | 경과 0.2시간] 끝 main__f4 (12.9분)
+[6/115 | 경과 0.2시간] 끝 main__f6 (13.0분)
+[7/115 | 경과 0.4시간] 끝 negw-0p15 (11.1분)
+[8/115 | 경과 0.4시간] 끝 wpop-2 (11.4분)
+[9/115 | 경과 0.4시간] 끝 wpop-0p75 (11.5분)
+[10/115 | 경과 0.4시간] 끝 wpop-0p05 (11.6분)
+[11/115 | 경과 0.4시간] 끝 wpop-0p2 (11.5분)
+[12/115 | 경과 0.4시간] 끝 main__f7 (12.9분)
+[13/115 | 경과 0.6시간] 끝 explore-1 (11.3분)
+[14/115 | 경과 0.6시간] 끝 negw-1 (11.5분)
+[15/115 | 경과 0.6시간] 끝 variation-0 (11.3분)
+[16/115 | 경과 0.6시간] 끝 explore-4 (12.0분)
+[17/115 | 경과 0.6시간] 끝 explore-8 (12.1분)
+[18/115 | 경과 0.6시간] 끝 variation-2 (11.5분)
+[19/115 | 경과 0.8시간] 끝 insert-0 (11.5분)
+[20/115 | 경과 0.8시간] 끝 variation-6 (11.6분)
+[21/115 | 경과 0.8시간] 끝 insert-3 (11.6분)
+[22/115 | 경과 0.8시간] 끝 insert-10 (11.6분)
+[23/115 | 경과 0.8시간] 끝 noise-0p05 (11.6분)
+[24/115 | 경과 0.8시간] 끝 noise-0p15 (11.6분)
+[25/115 | 경과 1.0시간] 끝 noise-0p25 (11.5분)
+[26/115 | 경과 1.0시간] 끝 noise-0p4 (11.6분)
+[27/115 | 경과 1.0시간] 끝 noise-0p5 (11.5분)
+[28/115 | 경과 1.0시간] 끝 likeq-0p6 (11.4분)
+[29/115 | 경과 1.0시간] 끝 likeq-0p75 (11.3분)
+[30/115 | 경과 1.0시간] 끝 likeq-0p85 (10.9분)
+[31/115 | 경과 1.2시간] 끝 likeq-0p95 (11.5분)
+[32/115 | 경과 1.2시간] 끝 halflife-30 (11.4분)
+[33/115 | 경과 1.2시간] 끝 halflife-3 (11.5분)
+[34/115 | 경과 1.2시간] 끝 price-1p5 (11.1분)
+[35/115 | 경과 1.2시간] 끝 halflife-inf (11.8분)
+[36/115 | 경과 1.2시간] 끝 price-3 (11.5분)
+[37/115 | 경과 1.4시간] 끝 price-6 (11.5분)
+[38/115 | 경과 1.4시간] 끝 dupq-0p95 (11.5분)
+[39/115 | 경과 1.4시간] 끝 price-inf (11.5분)
+[40/115 | 경과 1.4시간] 끝 dupq-0p999 (11.5분)
+[41/115 | 경과 1.4시간] 끝 dupdays-14 (11.5분)
+[42/115 | 경과 1.4시간] 끝 dupdays-56 (11.7분)
+[43/115 | 경과 1.6시간] 끝 tag-0 (11.5분)
+[44/115 | 경과 1.6시간] 끝 price-basis-all (11.6분)
+[45/115 | 경과 1.6시간] 끝 dup-type (11.6분)
+[46/115 | 경과 1.6시간] 끝 tag-0p6 (11.6분)
+[47/115 | 경과 1.6시간] 끝 noise-0__explore-0 (11.7분)
+[48/115 | 경과 1.6시간] 끝 noise-0__explore-6 (12.2분)
+[49/115 | 경과 1.7시간] 끝 noise-0p2__explore-0 (11.4분)
+[50/115 | 경과 1.7시간] 끝 noise-0p3__explore-0 (11.5분)
+[51/115 | 경과 1.8시간] 끝 noise-0p2__explore-6 (12.2분)
+[52/115 | 경과 1.8시간] 끝 noise-0__likeq-0p7 (11.2분)
+[53/115 | 경과 1.8시간] 끝 noise-0p3__explore-6 (12.3분)
+[54/115 | 경과 1.8시간] 끝 noise-0__likeq-0p9 (11.2분)
+[55/115 | 경과 1.9시간] 끝 noise-0p3__likeq-0p7 (11.6분)
+[56/115 | 경과 1.9시간] 끝 noise-0p3__likeq-0p9 (11.8분)
+[57/115 | 경과 2.0시간] 끝 noise-0p3__price-2 (11.5분)
+[58/115 | 경과 2.0시간] 끝 noise-0__price-2 (11.6분)
+[59/115 | 경과 2.0시간] 끝 likeq-0p7__price-2 (11.4분)
+[60/115 | 경과 2.0시간] 끝 likeq-0p9__price-2 (11.4분)
+[61/115 | 경과 2.1시간] 끝 explore-0__wpop-0 (10.7분)
+[62/115 | 경과 2.1시간] 끝 explore-0__wpop-0p3 (10.7분)
+[63/115 | 경과 2.1시간] 끝 explore-0__wpop-1 (10.7분)
+[64/115 | 경과 2.1시간] 끝 explore-6__wpop-0 (11.6분)
+[65/115 | 경과 2.2시간] 끝 explore-6__wpop-0p3 (11.6분)
+[66/115 | 경과 2.2시간] 끝 explore-6__wpop-1 (11.6분)
+[67/115 | 경과 2.3시간] 끝 noise-0p3__f1 (12.7분)
+[68/115 | 경과 2.3시간] 끝 noise-0p3__f2 (12.6분)
+[69/115 | 경과 2.3시간] 끝 noise-0p3__f3 (12.6분)
+[70/115 | 경과 2.4시간] 끝 noise-0p3__f4 (12.9분)
+[71/115 | 경과 2.4시간] 끝 noise-0p3__f5 (12.8분)
+[72/115 | 경과 2.4시간] 끝 noise-0p3__f6 (12.8분)
+[73/115 | 경과 2.5시간] 끝 noise-0p3__f7 (12.6분)
+[74/115 | 경과 2.6시간] 끝 explore-6__f1 (13.3분)
+[75/115 | 경과 2.6시간] 끝 explore-6__f2 (13.2분)
+[76/115 | 경과 2.6시간] 끝 explore-6__f5 (12.6분)
+[77/115 | 경과 2.6시간] 끝 explore-6__f3 (13.4분)
+[78/115 | 경과 2.6시간] 끝 explore-6__f4 (13.5분)
+[79/115 | 경과 2.8시간] 끝 explore-6__f6 (13.2분)
+[80/115 | 경과 2.8시간] 끝 likeq-0p7__f1 (12.8분)
+[81/115 | 경과 2.8시간] 끝 explore-6__f7 (13.4분)
+[82/115 | 경과 2.8시간] 끝 likeq-0p7__f3 (12.1분)
+[83/115 | 경과 2.8시간] 끝 likeq-0p7__f2 (12.9분)
+[84/115 | 경과 2.8시간] 끝 likeq-0p7__f4 (12.1분)
+[85/115 | 경과 3.0시간] 끝 likeq-0p7__f5 (12.9분)
+[86/115 | 경과 3.0시간] 끝 likeq-0p7__f6 (12.9분)
+[87/115 | 경과 3.0시간] 끝 likeq-0p7__f7 (12.9분)
+[88/115 | 경과 3.0시간] 끝 price-2__f1 (12.8분)
+[89/115 | 경과 3.0시간] 끝 price-2__f2 (12.8분)
+[90/115 | 경과 3.0시간] 끝 price-2__f3 (12.8분)
+[91/115 | 경과 3.0시간] 실패 rule-off__f1 (2.2분)
+Traceback (most recent call last):
+  File "/Users/seungjinkim/hm-experiment/scripts/sweep.py", line 237, in <module>
+    main()
+    ~~~~^^
+  File "/Users/seungjinkim/hm-experiment/scripts/sweep.py", line 223, in main
+    name, rc, sec = fut.result()
+                    ~~~~~~~~~~^^
+object address  : 0x103149840
+object refcount : 4
+
