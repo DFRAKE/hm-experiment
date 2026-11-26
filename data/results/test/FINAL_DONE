@@ -1,0 +1,1 @@
+2026-11-26T23:28 (src.scoring score --split test --final, 메인 config.yaml, seed 0-4. 결과 저장 직후 표시 파일 쓰기에서 폴더 없음 오류 → 채점은 다시 하지 않고 표시만 수동으로 남김)

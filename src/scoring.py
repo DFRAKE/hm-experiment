@@ -370,6 +370,7 @@ def main(argv=None) -> None:
         raise SystemExit("정답 주 채점은 기본 결과 폴더에만 씁니다 (--out 불가).")
     r = score(cfg, args.split, args.seeds, out=args.out)
     if args.split == "test":
+        marker.parent.mkdir(parents=True, exist_ok=True)   # 2026-11-26 첫 채점 때 폴더가 없어 표시를 못 남긴 버그 수정
         marker.write_text(pd.Timestamp.now().isoformat(timespec="seconds"))
     s = r["summary"]
     print(json.dumps(r["meta"], ensure_ascii=False))

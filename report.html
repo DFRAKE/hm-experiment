@@ -76,7 +76,7 @@ footer { border-top: 1px solid var(--line); padding-top: 1.25rem; font-size: 0.8
     <p class="eyebrow">H&amp;M 고객 봇 실험 · 135개 실행 · 2026-11-26</p>
     <h1>목록형 쇼핑몰과 스와이프형(대추마켓), 숨은 취향을 누가 더 잘 찾나</h1>
     <p class="lede">추천 엔진을 같게 맞추면 <span class="s">스와이프</span>가 봇의 숨은 취향을 더 잘 찾습니다. 조건을 79가지로 바꿔도 진 적이 없습니다. 하지만 <span class="l">다음 주에 실제로 살 옷</span>을 맞히는 데는 인기 상품 위주의 목록형이 유리합니다.</p>
-    <p class="notice">모든 결과는 <b>검증 주</b>(9/9~9/15) 기준입니다. 정답 주(9/16~9/22)는 아직 열지 않았습니다. ▲ 스와이프 우세, ▼ 목록 우세, 비김 = 95% 구간이 0을 포함.</p>
+    <p class="notice">메인 결과는 <b>정답 주</b>(9/16~9/22)로 한 번만 채점했습니다. 135개 조건 비교는 <b>검증 주</b>(9/9~9/15) 기준입니다. ▲ 스와이프 우세, ▼ 목록 우세, 비김 = 95% 구간이 0을 포함.</p>
   </header>
 
   <section aria-label="핵심 수치">
@@ -84,8 +84,27 @@ footer { border-top: 1px solid var(--line); padding-top: 1.25rem; font-size: 0.8
       <div class="stat"><span class="big s">+6.4%p</span><span class="cap">같은 엔진에서 60장 중 봇이 좋아할 옷 비율 차이 (51.1% → 57.5%)</span></div>
       <div class="stat"><span class="big s">68 / 79</span><span class="cap">조건을 바꿔 돌린 79개 중 스와이프가 이긴 조건. 나머지 11개는 비김, 진 조건 0</span></div>
       <div class="stat"><span class="big s">7 / 7</span><span class="cap">서로 겹치지 않는 다른 고객 7묶음(약 1,110명씩)에서 모두 같은 결론</span></div>
-      <div class="stat"><span class="big l">−7.0%p</span><span class="cap">다음 주 실제 구매 근접 적중은 목록이 앞섬 (같은 엔진 기준)</span></div>
+      <div class="stat"><span class="big l">−13.4%p</span><span class="cap">정답 주 실제 구매 근접 적중은 목록이 앞섬 (같은 엔진 기준, 검증 주 −7.0%p)</span></div>
     </div>
+  </section>
+
+  <section>
+    <div class="prose"><h2>정답 주 최종 채점</h2><p class="muted">메인 조건, 2026-11-26, 한 번만 채점.</p></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>지표</th><th>원래 엔진 (목록 → 스와이프)</th><th>같은 엔진 v2 (목록 → 스와이프)</th></tr></thead>
+        <tbody>
+          <tr><td>60장 중 좋아할 옷 비율</td><td class="n">47.1% → 50.2% <b>+3.1%p</b><span class="chip s">▲</span></td><td class="n">51.1% → 57.5% <b>+6.4%p</b><span class="chip s">▲</span></td></tr>
+          <tr><td>최종 20개 중 좋아할 옷</td><td class="n">16.7 → 16.5개<span class="chip t">비김</span></td><td class="n">14.6 → 18.0개 <b>+3.4개</b><span class="chip s">▲</span></td></tr>
+          <tr><td>다음 주 구매 근접 적중</td><td class="n">51.2% → 17.6% <b>−33.6%p</b><span class="chip l">▼</span></td><td class="n">38.6% → 25.2% <b>−13.4%p</b><span class="chip l">▼</span></td></tr>
+          <tr><td>다음 주 구매 정확 적중</td><td class="n">5.7% → 0.8%<span class="chip l">▼</span></td><td class="n">4.6% → 3.6%<span class="chip t">비김</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="prose">
+      <li><b>취향 지표는 검증 주와 숫자가 똑같습니다.</b> 취향은 학습 기간 데이터로만 만든 봇 규칙으로 판정해서, 어느 주로 채점하든 같습니다. 정답 주가 새로 알려 주는 것은 다음 주 구매 쪽입니다.</li>
+      <li><b>다음 주 구매는 정답 주에서도 목록이 앞섭니다.</b> 원래 엔진은 검증 주와 거의 같고(−32.5 → −33.6%p), 같은 엔진은 차이가 더 커졌습니다(−7.0 → −13.4%p).</li>
+    </ul>
   </section>
 
   <section class="prose">
@@ -208,7 +227,6 @@ footer { border-top: 1px solid var(--line); padding-top: 1.25rem; font-size: 0.8
   <section class="prose">
     <h2>남은 일</h2>
     <ul>
-      <li><b>정답 주(9/16~9/22) 채점.</b> 메인 조건 하나만, 한 번만 합니다.</li>
       <li><b>사용성 평가.</b> 사람을 대상으로 둘러보기 과제와 목적 과제를 설계합니다.</li>
     </ul>
   </section>
