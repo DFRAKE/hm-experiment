@@ -128,3 +128,34 @@ def test_price_basis_and_near_dup_profiles():
     assert new.price_th == pytest.approx(0.04)            # 최근 14일 구매(0.04)만 기준
     assert new.dup_th is not None and np.array_equal(new.recent_emb["Dress"], pool.bot_emb[[2]])
     assert new.rule(pool, 2).reason == "already_have"     # 작은 풀은 같은 종류 쌍 유사도가 모두 0이라 dup_th = 0
+
+
+def test_pop_follow_rule():
+    """유행 따르기: 인기 점수가 취향 기준선을 넘기게 하면 찜, pop_coef 0 이면 원래 규칙 그대로."""
+    pool = _tiny_pool()
+    taste = np.array([1, 0, 0, 0], dtype=np.float32)
+    base = B.Bot("b", "A", taste, like_th=0.5, price_th=1.0, recent_types=frozenset(), noise=0.0)
+    assert base.rule(pool, 3).reason == "not_my_taste"
+    z = np.array([0, 0, 0, 2], dtype=np.float32)
+    pop = B.Bot("b", "A", taste, like_th=0.5, price_th=1.0, recent_types=frozenset(), noise=0.0, pop_coef=0.3, pop_z=z)
+    assert pop.rule(pool, 3).action == "like"
+    assert pop.rule(pool, 3).sim == pytest.approx(0.0)          # 로그에 남는 값은 취향 유사도 그대로
+    _, ok, like = pop.rule_mask(pool, np.arange(4))
+    assert ok.tolist() == [True, False, False, True] and like.tolist() == [True, False, False, True]
+
+
+@needs_data
+def test_pop_weight_zero_is_unchanged():
+    import copy
+    from src.items import load_pool
+    pool = load_pool(CFG)
+    table = B.load_bot_table(CFG).iloc[:20]
+    tx = B.load_train_tx(CFG)
+    a = B.build_profiles(tx, pool, table, CFG, 0)
+    c = copy.deepcopy(CFG)
+    c["bot_rule"]["pop_weight"] = 0.0
+    b = B.build_profiles(tx, pool, table, c, 0)
+    assert [x.like_th for x in a] == [x.like_th for x in b] and all(x.pop_coef == 0 for x in b)
+    c["bot_rule"]["pop_weight"], c["bot_rule"]["pop_mode"] = 0.5, "personal"
+    p = B.build_profiles(tx, pool, table, c, 0)
+    assert all(x.pop_coef >= 0 for x in p) and max(x.pop_coef for x in p) > 0

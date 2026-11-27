@@ -37,6 +37,16 @@ class Bot:
     # 명세 수정 v3 (이미 있어요 = 거의 같은 옷): None 이면 원 설계처럼 종류만 같아도 이미 있어요
     dup_th: float | None = None
     recent_emb: dict = field(default_factory=dict)   # 종류 -> 최근 산 상품의 봇 좌표 (k, d)
+    # 유행 따르기 (2026-11-27 추가, 기본 끔): 찜 판단 점수 = 취향 유사도 + pop_coef × 상품 인기도(표준화)
+    pop_coef: float = 0.0
+    pop_z: np.ndarray | None = None                  # (풀 크기,) 모든 봇이 같은 배열을 공유
+
+    def score(self, pool: ItemPool, rows) -> np.ndarray | float:
+        """찜 판단 점수. 유행 따르기를 끄면(pop_coef 0) 취향 유사도 그대로."""
+        sim = pool.bot_emb[rows] @ self.taste
+        if self.pop_coef and self.pop_z is not None:
+            return sim + self.pop_coef * self.pop_z[rows]
+        return sim
 
     def _is_dup(self, v: np.ndarray, type_: str) -> bool:
         if type_ not in self.recent_types:
@@ -49,7 +59,7 @@ class Bot:
     def rule(self, pool: ItemPool, row: int) -> Reaction:
         """변덕 없이 규칙만 적용 (4.2). 봇은 봇 좌표(pool.bot_emb)로만 판단한다."""
         sim = float(pool.bot_emb[row] @ self.taste)
-        if sim >= self.like_th:
+        if float(self.score(pool, row)) >= self.like_th:
             if pool.price[row] > self.price_th:
                 return Reaction("skip", "expensive", sim)
             if self._is_dup(pool.bot_emb[row], pool.type_[row]):
@@ -65,7 +75,7 @@ class Bot:
         """rule 을 여러 상품에 한꺼번에. 반환: (sim, 취향 기준 통과, 변덕 없이 찜)."""
         rows = np.asarray(rows)
         sim = pool.bot_emb[rows] @ self.taste
-        taste_ok = sim >= self.like_th
+        taste_ok = self.score(pool, rows) >= self.like_th
         like = taste_ok & (pool.price[rows] <= self.price_th)
         idx = np.flatnonzero(like)
         like[idx] &= ~self.dup_mask(pool, rows[idx])
@@ -183,16 +193,48 @@ def build_profiles(train_tx: pd.DataFrame, pool: ItemPool, bots: pd.DataFrame,
     elif mode != "type":
         raise ValueError(f"already_have 는 type 또는 near_dup: {mode}")
 
+    # 유행 따르기 (기본 끔). pop_weight = 인기도 1표준편차가 취향 유사도 몇 표준편차(봇마다)만큼인지
+    #   fixed    : 모든 봇 같은 값
+    #   personal : 학습 기간에 인기 상품을 많이 산 고객일수록 크게 (봇 순위 백분위 × 2 × pop_weight, 평균 ≈ pop_weight)
+    beta = float(rc.get("pop_weight", 0.0) or 0.0)
+    pop_z, beta_k = None, np.zeros(len(bot_ids))
+    if beta:
+        pop_z = popularity_z(pool)
+        pmode = rc.get("pop_mode", "fixed")
+        if pmode == "fixed":
+            beta_k[:] = beta
+        elif pmode == "personal":
+            beta_k = 2 * beta * pop_tendency(tt, pool, bot_ids).rank(pct=True).to_numpy()
+        else:
+            raise ValueError(f"pop_mode 는 fixed 또는 personal: {pmode}")
+
     out = []
     for k, b in enumerate(bot_ids):
         rng = np.random.default_rng([seed, k])          # 봇마다 독립, seed·순서로 재현
         sample = rng.choice(len(pool), size=rc["like_sample"], replace=False)
-        like_th = float(np.quantile(pool.bot_emb[sample] @ taste[k], rc["like_quantile"]))
+        s_sim = pool.bot_emb[sample] @ taste[k]
+        coef = float(beta_k[k] * s_sim.std()) if beta else 0.0
+        s = s_sim + coef * pop_z[sample] if coef else s_sim
+        like_th = float(np.quantile(s, rc["like_quantile"]))
         out.append(Bot(bot_id=b, group=bots.at[b, "group"], taste=taste[k], like_th=like_th,
                        price_th=float(price_med[b] * rc["price_mult"]),
                        recent_types=recent.get(b, frozenset()), noise=rc["noise"],
-                       dup_th=dup_th, recent_emb=recent_emb.get(b, {})))
+                       dup_th=dup_th, recent_emb=recent_emb.get(b, {}), pop_coef=coef, pop_z=pop_z))
     return out
+
+
+def popularity_z(pool: ItemPool) -> np.ndarray:
+    """상품 인기도(학습 기간 마지막 7일 판매 수, 목록형 정렬 기준)를 log1p 후 풀 안에서 표준화."""
+    x = np.log1p(pool.df["popularity"].to_numpy(dtype=float))
+    return ((x - x.mean()) / x.std()).astype(np.float32)
+
+
+def pop_tendency(train_tx: pd.DataFrame, pool: ItemPool, bot_ids) -> pd.Series:
+    """고객의 인기 추종 성향 = 학습 기간에 산 옷(풀 안)의 평균 인기 백분위. 구매가 없으면 0.5."""
+    pct = pd.Series(pool.df["popularity"].to_numpy(dtype=float)).rank(pct=True).to_numpy()
+    t = train_tx[train_tx["article_id"].isin(pool.index)]
+    s = pd.Series(pct[pool.rows(t["article_id"])], index=t["customer_id"].to_numpy()).groupby(level=0).mean()
+    return s.reindex(bot_ids).fillna(0.5)
 
 
 # ---------------------------------------------------------------- 저장 / 읽기

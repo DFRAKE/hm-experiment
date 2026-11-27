@@ -1,0 +1,129 @@
+run,factor,value,label,mode,pref,near,pareto
+explore-0,explore,0,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),list_v2,0.51106,0.37839999999999996,False
+explore-0,explore,0,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),swipe_v2,0.6060666666666668,0.31679999999999997,True
+explore-0,explore,0,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),list,0.4707266666666667,0.5372,True
+explore-0,explore,0,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),swipe,0.5303133333333333,0.2212,False
+explore-0__wpop-0,explore_x_wpop,"explore=0, wpop=0.0",탐색 상품 수 × v2 인기도 가중치,list_v2,0.5085,0.256,False
+explore-0__wpop-0,explore_x_wpop,"explore=0, wpop=0.0",탐색 상품 수 × v2 인기도 가중치,swipe_v2,0.5936933333333333,0.214,False
+explore-0__wpop-0,explore_x_wpop,"explore=0, wpop=0.0",탐색 상품 수 × v2 인기도 가중치,list,0.4707266666666667,0.5372,True
+explore-0__wpop-0,explore_x_wpop,"explore=0, wpop=0.0",탐색 상품 수 × v2 인기도 가중치,swipe,0.5303133333333333,0.2212,False
+explore-0__wpop-0p3,explore_x_wpop,"explore=0, wpop=0.3",탐색 상품 수 × v2 인기도 가중치,list_v2,0.5011666666666666,0.4224,False
+explore-0__wpop-0p3,explore_x_wpop,"explore=0, wpop=0.3",탐색 상품 수 × v2 인기도 가중치,swipe_v2,0.59512,0.3976,True
+explore-0__wpop-0p3,explore_x_wpop,"explore=0, wpop=0.3",탐색 상품 수 × v2 인기도 가중치,list,0.4707266666666667,0.5372,True
+explore-0__wpop-0p3,explore_x_wpop,"explore=0, wpop=0.3",탐색 상품 수 × v2 인기도 가중치,swipe,0.5303133333333333,0.2212,False
+explore-0__wpop-1,explore_x_wpop,"explore=0, wpop=1.0",탐색 상품 수 × v2 인기도 가중치,list_v2,0.49058,0.48119999999999996,False
+explore-0__wpop-1,explore_x_wpop,"explore=0, wpop=1.0",탐색 상품 수 × v2 인기도 가중치,swipe_v2,0.5631,0.4764000000000001,True
+explore-0__wpop-1,explore_x_wpop,"explore=0, wpop=1.0",탐색 상품 수 × v2 인기도 가중치,list,0.4707266666666667,0.5372,True
+explore-0__wpop-1,explore_x_wpop,"explore=0, wpop=1.0",탐색 상품 수 × v2 인기도 가중치,swipe,0.5303133333333333,0.2212,False
+explore-1,explore,1,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),list_v2,0.51106,0.37839999999999996,False
+explore-1,explore,1,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),swipe_v2,0.5902000000000001,0.30839999999999995,False
+explore-1,explore,1,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),list,0.4707266666666667,0.5372,True
+explore-1,explore,1,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),swipe,0.5160399999999999,0.21919999999999998,False
+explore-4,explore,4,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),list_v2,0.51106,0.37839999999999996,False
+explore-4,explore,4,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),swipe_v2,0.5428866666666666,0.3028,False
+explore-4,explore,4,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),list,0.4707266666666667,0.5372,True
+explore-4,explore,4,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),swipe,0.47254666666666667,0.216,False
+explore-6,explore,6,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),list_v2,0.51106,0.37839999999999996,False
+explore-6,explore,6,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),swipe_v2,0.5185799999999999,0.3008,False
+explore-6,explore,6,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),list,0.4707266666666667,0.5372,True
+explore-6,explore,6,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),swipe,0.44504000000000005,0.21840000000000004,False
+explore-6__wpop-0,explore_x_wpop,"explore=6, wpop=0.0",탐색 상품 수 × v2 인기도 가중치,list_v2,0.5085,0.256,False
+explore-6__wpop-0,explore_x_wpop,"explore=6, wpop=0.0",탐색 상품 수 × v2 인기도 가중치,swipe_v2,0.50982,0.21760000000000002,False
+explore-6__wpop-0,explore_x_wpop,"explore=6, wpop=0.0",탐색 상품 수 × v2 인기도 가중치,list,0.4707266666666667,0.5372,True
+explore-6__wpop-0,explore_x_wpop,"explore=6, wpop=0.0",탐색 상품 수 × v2 인기도 가중치,swipe,0.44504000000000005,0.21840000000000004,False
+explore-6__wpop-0p3,explore_x_wpop,"explore=6, wpop=0.3",탐색 상품 수 × v2 인기도 가중치,list_v2,0.5011666666666666,0.4224,False
+explore-6__wpop-0p3,explore_x_wpop,"explore=6, wpop=0.3",탐색 상품 수 × v2 인기도 가중치,swipe_v2,0.5126266666666667,0.3932,False
+explore-6__wpop-0p3,explore_x_wpop,"explore=6, wpop=0.3",탐색 상품 수 × v2 인기도 가중치,list,0.4707266666666667,0.5372,True
+explore-6__wpop-0p3,explore_x_wpop,"explore=6, wpop=0.3",탐색 상품 수 × v2 인기도 가중치,swipe,0.44504000000000005,0.21840000000000004,False
+explore-6__wpop-1,explore_x_wpop,"explore=6, wpop=1.0",탐색 상품 수 × v2 인기도 가중치,list_v2,0.49058,0.48119999999999996,False
+explore-6__wpop-1,explore_x_wpop,"explore=6, wpop=1.0",탐색 상품 수 × v2 인기도 가중치,swipe_v2,0.49726,0.4696,False
+explore-6__wpop-1,explore_x_wpop,"explore=6, wpop=1.0",탐색 상품 수 × v2 인기도 가중치,list,0.4707266666666667,0.5372,True
+explore-6__wpop-1,explore_x_wpop,"explore=6, wpop=1.0",탐색 상품 수 × v2 인기도 가중치,swipe,0.44504000000000005,0.21840000000000004,False
+explore-8,explore,8,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),list_v2,0.51106,0.37839999999999996,False
+explore-8,explore,8,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),swipe_v2,0.5190266666666666,0.2984,False
+explore-8,explore,8,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),list,0.4707266666666667,0.5372,True
+explore-8,explore,8,세트 20장 중 탐색 상품 수 (스와이프·목록 v2),swipe,0.4166866666666667,0.2236,False
+insert-0,insert,0,목록 v2 2·3페이지에 끼워 넣는 추천 상품 수,list_v2,0.4707266666666667,0.40720000000000006,False
+insert-0,insert,0,목록 v2 2·3페이지에 끼워 넣는 추천 상품 수,swipe_v2,0.5750266666666667,0.3088,False
+insert-0,insert,0,목록 v2 2·3페이지에 끼워 넣는 추천 상품 수,list,0.4707266666666667,0.5372,True
+insert-0,insert,0,목록 v2 2·3페이지에 끼워 넣는 추천 상품 수,swipe,0.5017466666666667,0.212,False
+insert-10,insert,10,목록 v2 2·3페이지에 끼워 넣는 추천 상품 수,list_v2,0.5381066666666667,0.35919999999999996,False
+insert-10,insert,10,목록 v2 2·3페이지에 끼워 넣는 추천 상품 수,swipe_v2,0.5750266666666667,0.3088,False
+insert-10,insert,10,목록 v2 2·3페이지에 끼워 넣는 추천 상품 수,list,0.4707266666666667,0.5372,True
+insert-10,insert,10,목록 v2 2·3페이지에 끼워 넣는 추천 상품 수,swipe,0.5017466666666667,0.212,False
+insert-3,insert,3,목록 v2 2·3페이지에 끼워 넣는 추천 상품 수,list_v2,0.4849533333333334,0.39720000000000005,False
+insert-3,insert,3,목록 v2 2·3페이지에 끼워 넣는 추천 상품 수,swipe_v2,0.5750266666666667,0.3088,False
+insert-3,insert,3,목록 v2 2·3페이지에 끼워 넣는 추천 상품 수,list,0.4707266666666667,0.5372,True
+insert-3,insert,3,목록 v2 2·3페이지에 끼워 넣는 추천 상품 수,swipe,0.5017466666666667,0.212,False
+main,main,,메인 (config.yaml),list_v2,0.51106,0.37839999999999996,False
+main,main,,메인 (config.yaml),swipe_v2,0.5750266666666667,0.3088,False
+main,main,,메인 (config.yaml),list,0.4707266666666667,0.5372,True
+main,main,,메인 (config.yaml),swipe,0.5017466666666667,0.212,False
+negw-0,negw,0.0,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),list_v2,0.51106,0.37839999999999996,False
+negw-0,negw,0.0,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),swipe_v2,0.56884,0.3084,False
+negw-0,negw,0.0,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),list,0.4707266666666667,0.5372,True
+negw-0,negw,0.0,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),swipe,0.4956466666666667,0.2144,False
+negw-0p15,negw,0.15,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),list_v2,0.51106,0.37839999999999996,False
+negw-0p15,negw,0.15,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),swipe_v2,0.5720266666666667,0.3132,False
+negw-0p15,negw,0.15,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),list,0.4707266666666667,0.5372,True
+negw-0p15,negw,0.15,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),swipe,0.4998266666666667,0.21920000000000003,False
+negw-0p6,negw,0.6,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),list_v2,0.51106,0.37839999999999996,False
+negw-0p6,negw,0.6,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),swipe_v2,0.581,0.28559999999999997,False
+negw-0p6,negw,0.6,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),list,0.4707266666666667,0.5372,True
+negw-0p6,negw,0.6,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),swipe,0.5080866666666666,0.2204,False
+negw-1,negw,1.0,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),list_v2,0.51106,0.37839999999999996,False
+negw-1,negw,1.0,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),swipe_v2,0.5835866666666667,0.2516,False
+negw-1,negw,1.0,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),list,0.4707266666666667,0.5372,True
+negw-1,negw,1.0,추천기가 '취향 아님'을 반영하는 세기 (스와이프·목록 v2),swipe,0.5100266666666666,0.22760000000000002,False
+tag-0,preset,tag-0,"추천 점수에서 태그 점수 끔 (사진·설명 유사도만, w_cos 1 / w_tag 0)",list_v2,0.5101,0.37439999999999996,False
+tag-0,preset,tag-0,"추천 점수에서 태그 점수 끔 (사진·설명 유사도만, w_cos 1 / w_tag 0)",swipe_v2,0.5547533333333333,0.346,False
+tag-0,preset,tag-0,"추천 점수에서 태그 점수 끔 (사진·설명 유사도만, w_cos 1 / w_tag 0)",list,0.4707266666666667,0.5372,True
+tag-0,preset,tag-0,"추천 점수에서 태그 점수 끔 (사진·설명 유사도만, w_cos 1 / w_tag 0)",swipe,0.48361333333333334,0.24080000000000001,False
+tag-0p6,preset,tag-0p6,추천 점수에서 태그 점수 비중 크게 (w_cos 0.4 / w_tag 0.6),list_v2,0.50796,0.36839999999999995,False
+tag-0p6,preset,tag-0p6,추천 점수에서 태그 점수 비중 크게 (w_cos 0.4 / w_tag 0.6),swipe_v2,0.5668333333333333,0.2772,False
+tag-0p6,preset,tag-0p6,추천 점수에서 태그 점수 비중 크게 (w_cos 0.4 / w_tag 0.6),list,0.4707266666666667,0.5372,True
+tag-0p6,preset,tag-0p6,추천 점수에서 태그 점수 비중 크게 (w_cos 0.4 / w_tag 0.6),swipe,0.5033666666666666,0.20160000000000003,False
+variation-0,variation,0,세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2),list_v2,0.51106,0.37839999999999996,False
+variation-0,variation,0,세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2),swipe_v2,0.5761933333333332,0.31239999999999996,False
+variation-0,variation,0,세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2),list,0.4707266666666667,0.5372,True
+variation-0,variation,0,세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2),swipe,0.5067133333333333,0.216,False
+variation-2,variation,2,세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2),list_v2,0.51106,0.37839999999999996,False
+variation-2,variation,2,세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2),swipe_v2,0.5765533333333334,0.308,False
+variation-2,variation,2,세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2),list,0.4707266666666667,0.5372,True
+variation-2,variation,2,세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2),swipe,0.5052933333333334,0.218,False
+variation-6,variation,6,세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2),list_v2,0.51106,0.37839999999999996,False
+variation-6,variation,6,세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2),swipe_v2,0.5721333333333335,0.3032,False
+variation-6,variation,6,세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2),list,0.4707266666666667,0.5372,True
+variation-6,variation,6,세트 20장 중 변형(같은 종류 다른 색) 상품 수 (스와이프·목록 v2),swipe,0.4978933333333333,0.21280000000000002,False
+wpop-0,wpop,0.0,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list_v2,0.5085,0.256,False
+wpop-0,wpop,0.0,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe_v2,0.5626066666666667,0.21280000000000002,False
+wpop-0,wpop,0.0,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list,0.4707266666666667,0.5372,True
+wpop-0,wpop,0.0,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe,0.5017466666666667,0.212,False
+wpop-0p05,wpop,0.05,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list_v2,0.5174933333333334,0.3404,False
+wpop-0p05,wpop,0.05,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe_v2,0.5755800000000001,0.2632,False
+wpop-0p05,wpop,0.05,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list,0.4707266666666667,0.5372,True
+wpop-0p05,wpop,0.05,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe,0.5017466666666667,0.212,False
+wpop-0p2,wpop,0.2,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list_v2,0.5059933333333333,0.408,False
+wpop-0p2,wpop,0.2,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe_v2,0.5710599999999999,0.3556,False
+wpop-0p2,wpop,0.2,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list,0.4707266666666667,0.5372,True
+wpop-0p2,wpop,0.2,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe,0.5017466666666667,0.212,False
+wpop-0p3,wpop,0.3,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list_v2,0.5011666666666666,0.4224,False
+wpop-0p3,wpop,0.3,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe_v2,0.5657533333333333,0.3976,False
+wpop-0p3,wpop,0.3,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list,0.4707266666666667,0.5372,True
+wpop-0p3,wpop,0.3,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe,0.5017466666666667,0.212,False
+wpop-0p5,wpop,0.5,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list_v2,0.49684000000000006,0.4524,False
+wpop-0p5,wpop,0.5,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe_v2,0.5578533333333333,0.444,False
+wpop-0p5,wpop,0.5,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list,0.4707266666666667,0.5372,True
+wpop-0p5,wpop,0.5,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe,0.5017466666666667,0.212,False
+wpop-0p75,wpop,0.75,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list_v2,0.49357999999999996,0.4712,False
+wpop-0p75,wpop,0.75,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe_v2,0.5477666666666666,0.4664,False
+wpop-0p75,wpop,0.75,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list,0.4707266666666667,0.5372,True
+wpop-0p75,wpop,0.75,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe,0.5017466666666667,0.212,False
+wpop-1,wpop,1.0,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list_v2,0.49058,0.48119999999999996,False
+wpop-1,wpop,1.0,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe_v2,0.5393066666666666,0.4824,True
+wpop-1,wpop,1.0,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list,0.4707266666666667,0.5372,True
+wpop-1,wpop,1.0,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe,0.5017466666666667,0.212,False
+wpop-2,wpop,2.0,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list_v2,0.49315333333333333,0.4952,True
+wpop-2,wpop,2.0,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe_v2,0.5061066666666666,0.4948,True
+wpop-2,wpop,2.0,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),list,0.4707266666666667,0.5372,True
+wpop-2,wpop,2.0,v2 인기도 가중치 (목록 v2·스와이프 v2 둘 다),swipe,0.5017466666666667,0.212,False

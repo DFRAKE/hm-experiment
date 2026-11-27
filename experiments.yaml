@@ -113,6 +113,45 @@ presets:
       recommender_v2.w_cos: 0.4
       recommender_v2.w_tag: 0.6
 
+  # ---- 2026-11-27 추가: 유행 따르는 봇 (scripts/calibrate_pop.py 에서 실제 구매 설명력 AUC 0.725 -> 0.90, 검증 주)
+  #      찜 판단 점수 = 취향 유사도 + β × (봇 취향 유사도 표준편차) × 인기도(표준화). 메인 봇은 β = 0 그대로.
+  popw-0p5:
+    label: "유행 따르는 봇 β=0.5 (모든 봇 같음)"
+    set:
+      bot_rule.pop_weight: 0.5
+  popw-1:
+    label: "유행 따르는 봇 β=1 (인기도 1표준편차 = 취향 1표준편차)"
+    set:
+      bot_rule.pop_weight: 1.0
+  popw-2:
+    label: "유행 따르는 봇 β=2 (실제 구매 설명력 최대)"
+    set:
+      bot_rule.pop_weight: 2.0
+  popw-1-personal:
+    label: "유행 따르는 봇 β=1, 사람마다 다름 (학습 기간에 인기 상품을 많이 산 고객일수록 큼)"
+    set:
+      bot_rule.pop_weight: 1.0
+      bot_rule.pop_mode: personal
+  popw-1__wpop-0:
+    label: "유행 따르는 봇 β=1 × v2 인기도 가중치 0"
+    set:
+      bot_rule.pop_weight: 1.0
+      recommender_v2.w_pop: 0.0
+  popw-1__wpop-0p3:
+    label: "유행 따르는 봇 β=1 × v2 인기도 가중치 0.3"
+    set:
+      bot_rule.pop_weight: 1.0
+      recommender_v2.w_pop: 0.3
+  popw-1__wpop-1:
+    label: "유행 따르는 봇 β=1 × v2 인기도 가중치 1"
+    set:
+      bot_rule.pop_weight: 1.0
+      recommender_v2.w_pop: 1.0
+  seeds-20:
+    label: "메인 그대로, seed 5개 -> 20개 (반복 횟수만 늘림)"
+    set:
+      session.seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
 grids:   # 두 가지를 함께 바꾸기 (한 가지만 바꾼 조합은 factors 결과를 그대로 씀)
   - name: noise_x_explore
     label: "변덕 × 탐색 상품 수"
@@ -132,4 +171,4 @@ grids:   # 두 가지를 함께 바꾸기 (한 가지만 바꾼 조합은 factor
 
 replicate:   # 다른 고객 7묶음으로 반복 (묶음마다 약 1,110명, 서로 겹치지 않음)
   folds: 7
-  conditions: [main, noise-0p3, explore-6, likeq-0p7, price-2, rule-off, rule-orig, rec-image]
+  conditions: [main, noise-0p3, explore-6, likeq-0p7, price-2, rule-off, rule-orig, rec-image, popw-1]

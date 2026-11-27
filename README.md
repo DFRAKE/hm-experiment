@@ -20,12 +20,21 @@
 - '비싸요' 같은 **넘긴 이유 신호**가 잦을수록 스와이프가 더 유리합니다. 다만 이유 신호를 꺼도 스와이프가 이깁니다.
 - **다음 주에 실제로 살 옷을 맞히는 데는 인기 상품 위주의 목록이 유리합니다.** "취향을 찾는 것"과 "다음 주 구매를 맞히는 것"은 다른 문제입니다.
 
+**추가 분석 (2026-11-27, 검증 주, [보고서 8장](report.md#8-추가-분석-2026-11-27-검증-주만))**
+- 다음 주 구매의 59%가 인기 상위 5% 상품이다. 구매 적중에서 목록형이 이기는 이유는 대부분 **인기 편향**이다.
+- 같은 엔진에서 인기도 가중치를 0.3~1로 올리면 스와이프가 **취향은 이기고 구매 적중은 비긴다.**
+- 봇에 **유행 따르기**를 넣으면 실제 구매 설명력이 AUC 0.725 → 0.90으로 오른다. 이 봇에서도 같은 엔진 스와이프가 근소하게 이긴다(+2.2%p, 7묶음 중 5승 2무). 인기도를 안 쓰는 원래 스와이프 엔진은 크게 진다.
+- seed를 5개 → 20개로 늘려도 결과가 같다.
+
 자세한 내용: [보고서 (report.md)](report.md) · [전체 135개 실행 결과표](data/results/all_runs_valid.md)
 
 ![노출에 따른 좋아할 옷 비율](data/results/figures/fig1_learning_curve.png)
 ![설정별 차이](data/results/figures/fig2_factors.png)
 ![다른 고객 묶음 반복](data/results/figures/fig3_folds.png)
 ![두 설정 조합](data/results/figures/fig4_grids.png)
+![인기 편향](data/results/figures/fig5_popularity.png)
+![취향과 구매의 맞바꿈](data/results/figures/fig6_tradeoff.png)
+![유행 따르는 봇](data/results/figures/fig7_popbots.png)
 
 ## 실험 설계
 
@@ -53,7 +62,7 @@
 
 ```
 config.yaml              메인 실험 설정
-experiments.yaml         견고성 조건 목록 (135개)
+experiments.yaml         견고성 조건 목록 (135개 + 추가 15개)
 configs/                 조건마다 자동 생성한 설정 (scripts/sweep.py)
 src/
   prepare.py             기간 자르기, 봇 후보, 상품 풀, A/B 배정
@@ -70,6 +79,10 @@ scripts/
   sweep.py               조건 전체 실행
   collect_results.py     결과 모으기 → data/results/all_runs_valid.md
   make_figures.py        그래프 → data/results/figures/
+  analyze_popularity.py  추가 분석: 인기 편향 (fig5)
+  analyze_tradeoff.py    추가 분석: 취향과 구매의 맞바꿈 (fig6)
+  calibrate_pop.py       추가 분석: 유행 따르는 봇의 실제 구매 설명력
+  analyze_popbots.py     추가 분석: 유행 따르는 봇 결과, seed 20개 (fig7)
 tests/                   단위 테스트 (pytest)
 data/results/            조건별 검증 주 요약 결과, 그래프
 ```

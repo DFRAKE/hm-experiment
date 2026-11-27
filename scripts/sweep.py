@@ -116,10 +116,14 @@ def conditions(base: dict | None = None) -> list[dict]:
     return out
 
 
+# config.yaml 에 없어도 되는 설정 (기본값이 코드에 있음. config.yaml 에 넣으면 기존 세션 기록과 달라져 다시 돌려야 함)
+OPTIONAL_KEYS = {"bots.table", "bot_rule.pop_weight", "bot_rule.pop_mode"}
+
+
 def build_cfg(base: dict, c: dict) -> dict:
     cfg = copy.deepcopy(base)
     for k, v in c["set"].items():
-        if k != "bots.table":
+        if k not in OPTIONAL_KEYS:
             get(base, k)                     # 오타 방지: config.yaml 에 없는 설정이면 KeyError
         put(cfg, k, v)
     put(cfg, "experiment.variant", c["variant"])
