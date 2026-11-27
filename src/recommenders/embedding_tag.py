@@ -42,6 +42,7 @@ class EmbeddingTagRecommender:
         self.n_neg = 0
         self.price_cap = np.inf
         self.block_types: set[int] = set()       # already_have: 다음 출력에서만 제외
+        self.block_rows: list[int] = []          # have_scope = similar: 이 상품과 비슷한 같은 종류만 제외
         self.shown_rows: set[int] = set()
 
     # ------------------------------------------------------------ 인터페이스
@@ -76,11 +77,27 @@ class EmbeddingTagRecommender:
             self._bump_tags(r, self.p["tag_not_my_taste"])
         elif reason == "expensive":
             self.price_cap = min(self.price_cap, float(self.pool.price[r]))
+            self._reason_taste(r)
         elif reason == "already_have":
-            self.block_types.add(int(self.type_code[r]))
+            if self.p.get("have_scope", "type") == "similar":
+                self.block_rows.append(r)
+            else:
+                self.block_types.add(int(self.type_code[r]))
+            self._reason_taste(r)
+
+    def _reason_taste(self, r: int) -> None:
+        """밤샘 탐색 (2026-11-28): '비싸요'·'이미 있어요'는 취향은 맞았다는 뜻이므로 찜처럼 취향에 더할 수 있다.
+        reason_taste = 0 (기본)이면 아무것도 하지 않는다."""
+        w = float(self.p.get("reason_taste", 0.0))
+        if w:
+            self.like_sum += w * self.pool.emb[r]
+            self.n_like += w
+            self._bump_tags(r, w * self.p["tag_like"])
 
     def next_set(self, k: int, exclude: set[str]) -> list[str]:
         n_var, n_exp = self.p["n_variation"], self.p["n_explore"]
+        if k != 20:                           # 세트 크기를 바꾸면 변형·탐색 수도 같은 비율로 (20장일 때는 그대로)
+            n_var, n_exp = round(n_var * k / 20), round(n_exp * k / 20)
         n_taste = k - n_var - n_exp
         score, ok = self._candidates(exclude)
         order = np.flatnonzero(ok)[np.argsort(-score[ok], kind="stable")]
@@ -108,13 +125,13 @@ class EmbeddingTagRecommender:
                 rows.append(r)
                 chosen.add(r)
         rows = [rows[i] for i in self.rng.permutation(len(rows))]   # 세트 안 순서는 섞음
-        self.block_types = set()
+        self.block_types, self.block_rows = set(), []
         return [self.pool.ids[r] for r in rows]
 
     def final_top(self, k: int, exclude: set[str]) -> list[str]:
         score, ok = self._candidates(exclude)
         order = np.flatnonzero(ok)[np.argsort(-score[ok], kind="stable")]
-        self.block_types = set()
+        self.block_types, self.block_rows = set(), []
         return [self.pool.ids[r] for r in order[:k]]
 
     # ------------------------------------------------------------ 내부
@@ -149,6 +166,12 @@ class EmbeddingTagRecommender:
         ok &= self.pool.price < self.price_cap
         if self.block_types:
             ok &= ~np.isin(self.type_code, list(self.block_types))
+        for r in self.block_rows:             # 같은 종류 중 설명이 가장 비슷한 have_top 비율만 제외
+            same = self.type_code == self.type_code[r]
+            sim = self.pool.emb[same] @ self.pool.emb[r]
+            th = np.quantile(sim, 1 - float(self.p.get("have_top", 0.05)))
+            idx = np.flatnonzero(same)[sim >= th]
+            ok[idx] = False
         if not ok.any():                      # 조건이 너무 좁으면 가격·종류 제한을 푼다
             ok = relaxed
         return self.scores(), ok

@@ -117,7 +117,9 @@ def conditions(base: dict | None = None) -> list[dict]:
 
 
 # config.yaml 에 없어도 되는 설정 (기본값이 코드에 있음. config.yaml 에 넣으면 기존 세션 기록과 달라져 다시 돌려야 함)
-OPTIONAL_KEYS = {"bots.table", "bot_rule.pop_weight", "bot_rule.pop_mode", "session.ladder"}
+OPTIONAL_KEYS = {"bots.table", "bot_rule.pop_weight", "bot_rule.pop_mode", "session.ladder",
+                 # 밤샘 탐색 (2026-11-28, scripts/overnight.py): 코드 기본값 = 기존 동작
+                 "session.set_size", "recommender_v2.reason_taste", "recommender_v2.have_scope", "recommender_v2.have_top"}
 
 
 def build_cfg(base: dict, c: dict) -> dict:

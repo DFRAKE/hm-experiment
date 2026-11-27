@@ -45,23 +45,25 @@ def run_bot(bot: Bot, k: int, main_cat: str, mode: str, pool: ItemPool, cfg: dic
     m = MODES.index(mode)
     react_rng = np.random.default_rng([seed, k, m, 0])     # 봇 반응(변덕)용
     rec_rng = np.random.default_rng([seed, k, m, 1])       # 추천기용
+    ss = cfg["session"].get("set_size", SET_SIZE)          # 밤샘 탐색: 세트 크기 (기본 20장 × 3세트)
+    sz = {"set_size": ss, "n_sets": cfg["session"]["exposure"] // ss}
     if mode == "list":
-        return run_list_session(bot, pool, PopularityRecommender(pool, main_cat), react_rng, seed)
+        return run_list_session(bot, pool, PopularityRecommender(pool, main_cat), react_rng, seed, **sz)
     if mode == "swipe":
         rec = EmbeddingTagRecommender(pool, rec_rng, cfg["recommender"])
-        return run_swipe_session(bot, pool, rec, react_rng, seed)
+        return run_swipe_session(bot, pool, rec, react_rng, seed, **sz)
     if mode == "list_v2":
         rec = ListPlusRecommender(pool, main_cat, rec_rng, cfg["recommender_v2"])
-        return run_list_session(bot, pool, rec, react_rng, seed, mode=mode)
+        return run_list_session(bot, pool, rec, react_rng, seed, mode=mode, **sz)
     if mode == "swipe_v2":
         rec = EmbeddingTagRecommender(pool, rec_rng, cfg["recommender_v2"], category=main_cat)
-        return run_swipe_session(bot, pool, rec, react_rng, seed, mode=mode)
+        return run_swipe_session(bot, pool, rec, react_rng, seed, mode=mode, **sz)
     if mode == "pop":
-        return run_list_session(bot, pool, PopularityBaseline(pool, main_cat), react_rng, seed, mode=mode)
+        return run_list_session(bot, pool, PopularityBaseline(pool, main_cat), react_rng, seed, mode=mode, **sz)
     if mode in LADDER_LEVEL:
         rec = SignalFilter(EmbeddingTagRecommender(pool, rec_rng, cfg["recommender_v2"], category=main_cat),
                            LADDER_LEVEL[mode])
-        return run_swipe_session(bot, pool, rec, react_rng, seed, mode=mode, exclude_skipped=mode != "swipe_s1")
+        return run_swipe_session(bot, pool, rec, react_rng, seed, mode=mode, exclude_skipped=mode != "swipe_s1", **sz)
     raise ValueError(mode)
 
 
@@ -95,7 +97,9 @@ def main(argv=None) -> None:
     ap.add_argument("--limit", type=int, default=None, help="앞에서 N명만 (빠른 점검용)")
     ap.add_argument("--overwrite", action="store_true", help="다른 설정으로 돌린 기존 세션을 덮어씀")
     args = ap.parse_args(argv)
-    assert cfg["session"]["exposure"] == SET_SIZE * N_SETS, "노출 예산은 20장 × 3세트 = 60으로 고정"
+    ss = cfg["session"].get("set_size", SET_SIZE)
+    assert cfg["session"]["exposure"] % ss == 0, "노출 예산은 세트 크기의 배수 (메인 20장 × 3세트 = 60)"
+    assert "set_size" in cfg["session"] or cfg["session"]["exposure"] == SET_SIZE * N_SETS
 
     pool = load_pool(cfg)
     train_tx = load_train_tx(cfg)

@@ -31,7 +31,8 @@ class ListPlusRecommender:
         self.base.update(article_id, action, None)
 
     def next_set(self, k: int, exclude: set[str]) -> list[str]:
-        n_pop = k - self.n_insert
+        n_ins = self.n_insert if k == 20 else round(self.n_insert * k / 20)   # 세트 크기를 바꾸면 같은 비율로
+        n_pop = k - n_ins
         pop = self.base.next_set(n_pop, exclude)
         score, ok = self.engine._candidates(exclude | set(pop))
         order = np.flatnonzero(ok)[np.argsort(-score[ok], kind="stable")]

@@ -1,0 +1,166 @@
+# 밤샘 탐색 (2026-11-28 00:20 ~ 07:00, 검증 주만). scripts/overnight.py 가 라운드 단위로 돌린다.
+# 라운드마다: 가설 -> 조건 -> 실행 -> 분석 -> 다음 라운드 설계. 기록은 data/results/analysis/overnight.md
+# 모든 조건은 데이터 사다리(session.ladder: true, 목록 v2 / S1 / S2 / S3 / '비싸요'만 / '이미 있어요'만 + 인기순)로 돌린다.
+# 조건 이름은 ladder__<바꾼 설정>. 정답 주(test)는 절대 돌리지 않는다.
+
+rounds:
+  - round: 1
+    hypothesis: >
+      스와이프 차이를 화면 55% · 넘김 40% · 이유 5%로 나눈 비율이 봇 가정과 엔진 설정을 바꿔도 유지되는가.
+      이유 버튼('비싸요', '이미 있어요')이 쓸모 있어지는 조건이 있는가.
+    conditions:
+      ladder__noise-0:        {bot_rule.noise: 0.0}
+      ladder__noise-0p2:      {bot_rule.noise: 0.2}
+      ladder__noise-0p3:      {bot_rule.noise: 0.3}
+      ladder__noise-0p5:      {bot_rule.noise: 0.5}
+      ladder__likeq-0p6:      {bot_rule.like_quantile: 0.6}
+      ladder__likeq-0p7:      {bot_rule.like_quantile: 0.7}
+      ladder__likeq-0p9:      {bot_rule.like_quantile: 0.9}
+      ladder__likeq-0p95:     {bot_rule.like_quantile: 0.95}
+      ladder__price-1p5:      {bot_rule.price_mult: 1.5}
+      ladder__price-2:        {bot_rule.price_mult: 2.0}
+      ladder__price-inf:      {bot_rule.price_mult: .inf}
+      ladder__halflife-3:     {bot_rule.taste_half_life_days: 3}
+      ladder__halflife-60:    {bot_rule.taste_half_life_days: 60}
+      ladder__halflife-inf:   {bot_rule.taste_half_life_days: .inf}
+      ladder__dupq-0p95:      {bot_rule.dup_quantile: 0.95}
+      ladder__dupdays-56:     {bot_rule.recent_days: 56}
+      ladder__popw-1:         {bot_rule.pop_weight: 1.0}
+      ladder__explore-0:      {recommender_v2.n_explore: 0}
+      ladder__explore-6:      {recommender_v2.n_explore: 6}
+      ladder__variation-0:    {recommender_v2.n_variation: 0}
+      ladder__variation-6:    {recommender_v2.n_variation: 6}
+      ladder__negw-0:         {recommender_v2.neg_weight: 0.0}
+      ladder__negw-0p6:       {recommender_v2.neg_weight: 0.6}
+      ladder__negw-1:         {recommender_v2.neg_weight: 1.0}
+      ladder__wpop-0:         {recommender_v2.w_pop: 0.0}
+      ladder__wpop-0p3:       {recommender_v2.w_pop: 0.3}
+      ladder__wpop-1:         {recommender_v2.w_pop: 1.0}
+      ladder__insert-0:       {recommender_v2.list_insert: 0}
+      ladder__insert-10:      {recommender_v2.list_insert: 10}
+
+  - round: 2
+    hypothesis: >
+      라운드 1 결과: 넘김 단계는 변덕 0.5를 빼면 늘 +1.3~+4.4로 남지만, 화면 몫(31~82%)은 목록 설정(추천 칸 수,
+      탐색 수)에 따라 크게 달라진다. 이유 단계는 거의 '비싸요'이고 가격 상한이 빡빡할수록 커지며(1.5배: +10.1),
+      '이미 있어요'만은 늘 약간 손해(−0.2~−0.8). 가설 (a) '이미 있어요'가 손해인 까닭은 종류 전체를 빼서다.
+      비슷한 옷만 빼거나(have-sim) 이유를 취향 신호로도 쓰면(rtaste) 손해가 사라진다. (b) 변덕이 크면 넘김
+      데이터가 해가 된다(0.5: −0.9). '취향 아님' 무게를 0으로 두면 막을 수 있다. (c) 세트가 작아 자주 갱신하거나
+      더 오래 보면 넘김 데이터 몫이 커진다.
+    conditions:
+      ladder__len120:                          {session.exposure: 120, session.set_size: 20}
+      ladder__ss10:                            {session.set_size: 10}
+      ladder__ss15:                            {session.set_size: 15}
+      ladder__have-sim-0p01:                   {recommender_v2.have_scope: similar, recommender_v2.have_top: 0.01}
+      ladder__have-sim-0p05:                   {recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+      ladder__have-sim-0p2:                    {recommender_v2.have_scope: similar, recommender_v2.have_top: 0.2}
+      ladder__rtaste-0p5:                      {recommender_v2.reason_taste: 0.5}
+      ladder__rtaste-1:                        {recommender_v2.reason_taste: 1.0}
+      ladder__rtaste-1__have-sim-0p05:         {recommender_v2.reason_taste: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+      ladder__price-2__rtaste-1:               {bot_rule.price_mult: 2.0, recommender_v2.reason_taste: 1.0}
+      ladder__price-1p5__rtaste-1:             {bot_rule.price_mult: 1.5, recommender_v2.reason_taste: 1.0}
+      ladder__noise-0p5__negw-0:               {bot_rule.noise: 0.5, recommender_v2.neg_weight: 0.0}
+      ladder__noise-0p3__negw-0:               {bot_rule.noise: 0.3, recommender_v2.neg_weight: 0.0}
+      ladder__explore-0__negw-1:               {recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0}
+      ladder__ss30:                            {session.set_size: 30}
+
+  - round: 3
+    hypothesis: >
+      라운드 2 결과: '이미 있어요'를 받으면 비슷한 옷만 빼면 손해가 사라지고(−0.2 → +0.2) 이유 단계가 +0.4 → +0.8로
+      두 배가 된다. 뺄 범위(1% / 5% / 20%)는 상관없다. 이유를 취향으로 쓰는 것(rtaste)은 효과 없음.
+      변덕 0.5에서 '취향 아님' 무게를 0으로 해도 넘김 손해가 그대로다(−0.8). 세션이 길수록(120장: 넘김 +5.8),
+      세트가 작을수록(10장: +4.0, 30장: +2.6) 넘김 데이터 효과가 커진다.
+      가설 (a) 변덕이 클 때의 손해는 '취향 아님' 태그 감점(−5) 때문이다. (b) have-sim 효과는 다른 고객 묶음에서도
+      나오고, '이미 있어요'가 잦으면 더 커진다. (c) 넘김 효과는 세션 길이에 따라 계속 커진다(180장, 120장 + 10장 세트).
+      긴 세션이면 변덕 0.3의 손실도 줄어든다.
+    conditions:
+      ladder__len120__ss10:                    {session.exposure: 120, session.set_size: 10}
+      ladder__len180:                          {session.exposure: 180, session.set_size: 20}
+      ladder__len120__f1:                      {session.exposure: 120, session.set_size: 20, bots.table: bot_folds/bots_f1.parquet}
+      ladder__len120__noise-0p3:               {session.exposure: 120, session.set_size: 20, bot_rule.noise: 0.3}
+      ladder__noise-0p5__tagn-0:               {bot_rule.noise: 0.5, recommender_v2.tag_not_my_taste: 0}
+      ladder__noise-0p5__negw-0__tagn-0:       {bot_rule.noise: 0.5, recommender_v2.neg_weight: 0.0, recommender_v2.tag_not_my_taste: 0}
+      ladder__tagn-0:                          {recommender_v2.tag_not_my_taste: 0}
+      ladder__have-sim-0p05__f1:               {recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05, bots.table: bot_folds/bots_f1.parquet}
+      ladder__have-sim-0p05__f2:               {recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05, bots.table: bot_folds/bots_f2.parquet}
+      ladder__have-sim-0p05__f3:               {recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05, bots.table: bot_folds/bots_f3.parquet}
+      ladder__dupq-0p95__have-sim-0p05:        {bot_rule.dup_quantile: 0.95, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+      ladder__price-2__have-sim-0p05:          {bot_rule.price_mult: 2.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+      ladder__explore-0__negw-1__have-sim-0p05: {recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+
+  - round: 4
+    hypothesis: >
+      라운드 3 결과: 변덕 0.5의 넘김 손해는 '취향 아님' 태그 감점 때문이다(감점 0이면 −0.9 → +0.1). 그런데 기본 봇에서
+      감점을 0으로 하면 넘김 효과가 +3.2 → +1.3으로 줄어든다. 태그 감점이 넘김 데이터의 가장 큰 통로이자 변덕에 약한 통로.
+      have-sim은 다른 고객 묶음 3개에서도 '이미 있어요' 손해를 없앤다. 세션 길이 60/120/180장: 합계 +8.0/+13.3/+17.0,
+      몫은 55/40/5 그대로. 가설 (a) 넘김 효과 = 태그 감점 + 취향 벡터 빼기 + 본 옷 다시 안 보여 주기로 나뉜다.
+      (b) 감점 크기에는 변덕에 따라 최적값이 있다(작은 감점이 변덕에 강하다). (c) 조율한 엔진(탐색 0, '취향 아님' 무게 1,
+      have-sim 5%, 이하 tuned)은 다른 고객 묶음, 빡빡한 가격, 변덕, 긴 세션에서도 기본 엔진보다 낫다.
+    conditions:
+      ladder__len120__tuned:                   {session.exposure: 120, session.set_size: 20, recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+      ladder__len120__have-sim-0p05:           {session.exposure: 120, session.set_size: 20, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+      ladder__tagn-0__negw-0:                  {recommender_v2.tag_not_my_taste: 0, recommender_v2.neg_weight: 0.0}
+      ladder__tagn-m2:                         {recommender_v2.tag_not_my_taste: -2}
+      ladder__tagn-m10:                        {recommender_v2.tag_not_my_taste: -10}
+      ladder__noise-0p2__tagn-0:               {bot_rule.noise: 0.2, recommender_v2.tag_not_my_taste: 0}
+      ladder__noise-0p3__tagn-0:               {bot_rule.noise: 0.3, recommender_v2.tag_not_my_taste: 0}
+      ladder__noise-0p3__tagn-m2:              {bot_rule.noise: 0.3, recommender_v2.tag_not_my_taste: -2}
+      ladder__noise-0p5__tagn-m2:              {bot_rule.noise: 0.5, recommender_v2.tag_not_my_taste: -2}
+      ladder__tuned__f1:                       {recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05, bots.table: bot_folds/bots_f1.parquet}
+      ladder__tuned__f2:                       {recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05, bots.table: bot_folds/bots_f2.parquet}
+      ladder__tuned__f3:                       {recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05, bots.table: bot_folds/bots_f3.parquet}
+      ladder__tuned__price-2:                  {recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05, bot_rule.price_mult: 2.0}
+      ladder__tuned__noise-0p3:                {recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05, bot_rule.noise: 0.3}
+
+  - round: 5
+    hypothesis: >
+      라운드 4 결과: 넘김 효과(+3.2)는 태그 감점 약 1.9 + 취향 벡터 빼기 약 1.3으로 나뉘고, 본 옷을 다시 안 보여 주는 것은 0(−0.1).
+      감점 0/−2/−5/−10 → 넘김 +1.3/+2.2/+3.2/+4.0으로 아직 포화하지 않는다. 변덕 0.3까지는 감점이 클수록 낫고(0: +1.0,
+      −2: +1.7, −5: +2.4), 변덕 0.5에서만 감점이 손해다. tuned 엔진은 고객 묶음 3개(+12.9/+12.6/+12.5), 가격 2배(+16.7),
+      변덕 0.3(+7.8), 120장(+20.3)에서 모두 기본 엔진보다 크다. 가설 (a) 감점은 −20 언저리에서 포화하거나 꺾인다.
+      (b) tuned에 감점 −10을 더하면 더 오른다. (c) 목록형이 2·3페이지를 전부 추천으로 채우면(끼워 넣기 14·20칸) 화면 차이가
+      대부분 사라진다 = 화면 효과는 "인기 상품을 섞느냐"의 효과다. (d) tuned는 까다로운 봇, 유행 따르는 봇, 가격 1.5배, 변덕 0.5에서도 낫다.
+    conditions:
+      ladder__tuned__ss10:                     {session.set_size: 10, recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+      ladder__tagn-m20:                        {recommender_v2.tag_not_my_taste: -20}
+      ladder__tagn-m40:                        {recommender_v2.tag_not_my_taste: -40}
+      ladder__tuned__tagn-m10:                 {recommender_v2.tag_not_my_taste: -10, recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+      ladder__insert-14:                       {recommender_v2.list_insert: 14}
+      ladder__insert-20:                       {recommender_v2.list_insert: 20}
+      ladder__noise-0p2__tagn-m10:             {bot_rule.noise: 0.2, recommender_v2.tag_not_my_taste: -10}
+      ladder__noise-0p3__tagn-m10:             {bot_rule.noise: 0.3, recommender_v2.tag_not_my_taste: -10}
+      ladder__tuned__popw-1:                   {bot_rule.pop_weight: 1.0, recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+      ladder__tuned__likeq-0p9:                {bot_rule.like_quantile: 0.9, recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+      ladder__tuned__price-1p5:                {bot_rule.price_mult: 1.5, recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+      ladder__tuned__noise-0p5:                {bot_rule.noise: 0.5, recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+
+  - round: 6
+    hypothesis: >
+      라운드 5 결과: 목록형이 2·3페이지를 전부 추천으로 채우면(끼워 넣기 20칸) 목록 v2가 50.5 → 57.9%로 오르고, 화면 단계는
+      +4.4 → −3.0 ▼, 스와이프 합계는 +8.0 → +0.6으로 줄어든다. 넘김 +3.2와 이유 +0.4는 그대로. 즉 "화면 효과"는 목록이
+      인기 상품을 섞는 데서 나오고, 추천으로 가득 찬 목록과 견주면 스와이프의 몫은 넘김·이유 데이터뿐이다.
+      감점은 −10에서 정점(넘김 +4.0), −20 +2.6, −40 −2.4 ▼. 가설: 추천으로 가득 찬 목록과 견줘도 (a) tuned 엔진,
+      (b) 긴 세션, (c) 자주 갱신(10장 세트), (d) 빡빡한 가격이면 스와이프가 분명히 이긴다. (e) 이 결과는 다른 고객 묶음에서도 같다.
+    conditions:
+      ladder__insert-20__len120__tuned:        {recommender_v2.list_insert: 20, session.exposure: 120, session.set_size: 20, recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+      ladder__insert-20__len120:               {recommender_v2.list_insert: 20, session.exposure: 120, session.set_size: 20}
+      ladder__insert-20__ss10:                 {recommender_v2.list_insert: 20, session.set_size: 10}
+      ladder__insert-20__tuned:                {recommender_v2.list_insert: 20, recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05}
+      ladder__insert-20__f1:                   {recommender_v2.list_insert: 20, bots.table: bot_folds/bots_f1.parquet}
+      ladder__insert-20__f2:                   {recommender_v2.list_insert: 20, bots.table: bot_folds/bots_f2.parquet}
+      ladder__insert-20__tagn-m10:             {recommender_v2.list_insert: 20, recommender_v2.tag_not_my_taste: -10}
+      ladder__insert-20__price-2:              {recommender_v2.list_insert: 20, bot_rule.price_mult: 2.0}
+      ladder__insert-20__noise-0p3:            {recommender_v2.list_insert: 20, bot_rule.noise: 0.3}
+
+  - round: 7
+    hypothesis: >
+      라운드 6 결과: 추천으로 가득 찬 목록과 견주면 기본 엔진 스와이프는 +0.6(고객 묶음 1: +0.3 ·, 2: +1.0)으로 거의 비기지만,
+      tuned +5.3, 가격 2배 +7.2, 120장 + tuned +9.4로 분명히 이긴다. 최종 추천 20개는 모든 조건에서 스와이프가 +2.6~+5.7개 많다.
+      가설: 추천으로 가득 찬 목록 대비 tuned의 우세는 다른 고객 묶음에서도 같다.
+    conditions:
+      ladder__insert-20__len120__tuned__f1:    {recommender_v2.list_insert: 20, session.exposure: 120, session.set_size: 20, recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05, bots.table: bot_folds/bots_f1.parquet}
+      ladder__insert-20__tuned__f1:            {recommender_v2.list_insert: 20, recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05, bots.table: bot_folds/bots_f1.parquet}
+      ladder__insert-20__tuned__f2:            {recommender_v2.list_insert: 20, recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05, bots.table: bot_folds/bots_f2.parquet}
+      ladder__insert-20__tuned__f3:            {recommender_v2.list_insert: 20, recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05, bots.table: bot_folds/bots_f3.parquet}
+      ladder__insert-20__f3:                   {recommender_v2.list_insert: 20, bots.table: bot_folds/bots_f3.parquet}
+      ladder__insert-20__tuned__price-2:       {recommender_v2.list_insert: 20, recommender_v2.n_explore: 0, recommender_v2.neg_weight: 1.0, recommender_v2.have_scope: similar, recommender_v2.have_top: 0.05, bot_rule.price_mult: 2.0}
