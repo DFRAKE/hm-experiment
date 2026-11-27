@@ -1,0 +1,180 @@
+<title>목록 vs 스와이프 요약</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* 레이아웃: 결과 보고서와 같은 체계. 한 줄 결론 → 핵심 숫자 → 차이 나누기 → 알게 된 것 → 제품에 주는 뜻 → 한계 */
+:root {
+  --bg: #f7f8fa; --paper: #ffffff; --fg: #14171c; --fg2: #4f5662; --line: #e1e4ea;
+  --swipe: #2a78d6; --list: #d4572a; --swipe-bg: #e6f0fc; --list-bg: #fbeae3; --tie-bg: #eef0f3;
+  --s1: #93bdf0; --s2: #4a8fe0; --s3: #1d5aa8; --on-s1: #0f2a4a; --on-s2: #ffffff; --on-s3: #ffffff;
+  --sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121418; --paper: #1a1d22; --fg: #eceef2; --fg2: #a7adb8; --line: #2c3038;
+  --swipe: #5b9ef0; --list: #ef7c50; --swipe-bg: #1b2b40; --list-bg: #3a2218; --tie-bg: #262a31;
+  --s1: #3f6ca6; --s2: #5b9ef0; --s3: #b0d2fa; --on-s1: #ffffff; --on-s2: #0b1a2e; --on-s3: #0b1a2e; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121418; --paper: #1a1d22; --fg: #eceef2; --fg2: #a7adb8; --line: #2c3038;
+  --swipe: #5b9ef0; --list: #ef7c50; --swipe-bg: #1b2b40; --list-bg: #3a2218; --tie-bg: #262a31;
+  --s1: #3f6ca6; --s2: #5b9ef0; --s3: #b0d2fa; --on-s1: #ffffff; --on-s2: #0b1a2e; --on-s3: #0b1a2e; color-scheme: dark }
+
+body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 16px; line-height: 1.7;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 2.5rem 4rem; }
+main { max-width: 56rem; margin: 0 auto; display: grid; gap: 3rem; }
+.prose { max-width: 44rem; }
+h1, h2, h3 { text-wrap: balance; line-height: 1.3; margin: 0; }
+h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.35rem; font-weight: 700; }
+h3 { font-size: 1.02rem; font-weight: 700; }
+p { margin: 0; }
+section { display: grid; gap: 1.1rem; }
+ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.45rem; }
+.eyebrow { font-size: 0.8rem; letter-spacing: 0.06em; color: var(--fg2); font-weight: 500; }
+.lede { font-size: 1.15rem; }
+.muted { color: var(--fg2); font-size: 0.92rem; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.s { color: var(--swipe); font-weight: 700; } .l { color: var(--list); font-weight: 700; }
+header { display: grid; gap: 1rem; }
+
+.how { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.6rem 1.5rem; list-style: none; padding: 0; }
+.how li { border-top: 1px solid var(--line); padding-top: 0.5rem; display: grid; gap: 0.15rem; }
+.how b { font-size: 0.85rem; font-weight: 500; color: var(--fg2); }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr)); gap: 1rem; }
+.stat { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.15rem; display: grid; gap: 0.3rem; align-content: start; min-width: 0; }
+.stat .big { font-family: var(--mono); font-size: 1.85rem; font-weight: 500; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.stat .cap { font-size: 0.9rem; color: var(--fg2); line-height: 1.5; }
+.stat.lead { border: 2px solid var(--swipe); }
+
+.split { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 1.1rem 1.2rem; display: grid; gap: 0.8rem; }
+.bar { display: flex; height: 3rem; border-radius: 6px; overflow: hidden; gap: 2px; background: var(--paper); }
+.seg { display: flex; align-items: center; padding-inline: 0.7rem; font-weight: 700; font-size: 0.9rem; white-space: nowrap; min-width: 0; overflow: hidden; }
+.seg.a { background: var(--s1); color: var(--on-s1); flex: 4.4; }
+.seg.b { background: var(--s2); color: var(--on-s2); flex: 3.2; }
+.seg.c { background: var(--s3); color: var(--on-s3); flex: 0.4; padding-inline: 0; }
+.keys { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.5rem 1.2rem; font-size: 0.92rem; }
+.keys div { display: grid; grid-template-columns: 0.9rem 1fr; gap: 0.5rem; align-items: start; }
+.keys i { width: 0.9rem; height: 0.9rem; border-radius: 3px; margin-top: 0.35rem; }
+.keys .num { font-weight: 500; }
+
+.tablewrap { overflow-x: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
+th, td { padding: 0.55rem 0.85rem; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+tr:last-child td { border-bottom: 0; }
+th { font-weight: 500; color: var(--fg2); font-size: 0.85rem; }
+td { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+td:first-child { font-family: var(--sans); }
+
+figure { margin: 0; display: grid; gap: 0.6rem; }
+.frame { background: #fcfcfb; border: 1px solid var(--line); border-radius: 10px; padding: 0.75rem; overflow-x: auto; }
+.frame img { display: block; width: 100%; height: auto; min-width: 40rem; }
+figcaption { font-size: 0.9rem; color: var(--fg2); max-width: 44rem; }
+
+.finds { display: grid; gap: 0.75rem; }
+.find { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.2rem 1.2rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--line); }
+.find:last-child { border-bottom: 0; }
+.find .k { font-weight: 700; }
+.find .k.s { color: var(--swipe); } .find .k.l { color: var(--list); }
+@media (max-width: 34rem) { .find { grid-template-columns: 1fr; } }
+
+.todo { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.15rem; display: grid; gap: 0.45rem; align-content: start; min-width: 0; }
+
+footer { border-top: 1px solid var(--line); padding-top: 1.25rem; font-size: 0.88rem; color: var(--fg2); display: grid; gap: 0.4rem; }
+footer a { color: var(--swipe); }
+a:focus-visible { outline: 2px solid var(--swipe); outline-offset: 2px; }
+</style>
+
+<main>
+  <header class="prose">
+    <p class="eyebrow">H&amp;M 고객 봇 시뮬레이션 · 결과 요약 · 2026-11-27</p>
+    <h1>스와이프는 찜을 더 끌어내고, 그 힘은 화면 구성과 넘김 데이터에서 나온다</h1>
+    <p class="lede">같은 추천 엔진에서 <span class="s">스와이프형</span>은 <span class="l">목록형</span>보다 찜 비율이 <b>8.0%p</b> 높았습니다. 그중 55%는 매 세트를 통째로 다시 고르는 화면에서, 40%는 넘김이라는 "싫어요" 데이터에서 나왔습니다. 다음 주에 실제로 살 옷을 맞히는 데는 인기 상품 위주의 목록형이 유리했습니다.</p>
+  </header>
+
+  <section>
+    <h2>어떻게 실험했나</h2>
+    <ul class="how">
+      <li><b>가상 고객</b>실제 H&amp;M 고객의 7~9월 구매 기록으로 봇 1,000명을 만들었습니다.</li>
+      <li><b>판단 방법</b>봇은 상품 사진(FashionCLIP)으로 취향을 보고, 가격과 이미 산 옷까지 따져 찜하거나 넘깁니다.</li>
+      <li><b>쇼핑몰</b>목록형과 스와이프형 모두 같은 인기 상품 20장으로 시작해 60장을 보여 줍니다.</li>
+      <li><b>메인 지표</b>60장 중 봇이 찜할 카드 비율. 봇의 실수는 빼고 규칙으로 판정합니다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>핵심 숫자</h2>
+    <div class="stats">
+      <div class="stat lead"><span class="big">50.5 → 58.5%</span><span class="cap">60장 중 찜 비율, 목록 v2 → 스와이프 (같은 엔진, 같은 봇)</span></div>
+      <div class="stat"><span class="big">+8.0%p</span><span class="cap">스와이프 우세, 95% 구간 [+7.5, +8.5]</span></div>
+      <div class="stat"><span class="big">7 / 7</span><span class="cap">서로 다른 고객 7묶음에서 모두 같은 방향</span></div>
+      <div class="stat"><span class="big">59%</span><span class="cap">다음 주 구매 중 인기 상위 5% 상품 비율. 구매 맞히기에서 목록형이 이기는 이유</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>+8.0%p는 어디서 오나</h2>
+    <p class="prose">스와이프가 추천기에 넘기는 데이터를 한 칸씩 늘려 가며 쟀습니다(데이터 사다리). 단계 차이를 더하면 전체 차이와 정확히 같습니다.</p>
+    <div class="split">
+      <div class="bar" role="img" aria-label="+8.0%p 중 화면 구성 4.4, 넘김 데이터 3.2, 이유 데이터 0.4">
+        <div class="seg a">+4.4</div><div class="seg b">+3.2</div><div class="seg c"></div>
+      </div>
+      <div class="keys">
+        <div><i style="background: var(--s1)"></i><span><b>화면 구성</b> <span class="num">+4.4%p · 55%</span><br><span class="muted">2·3세트 20칸을 모두 개인화 (목록은 6칸)</span></span></div>
+        <div><i style="background: var(--s2)"></i><span><b>넘김 데이터</b> <span class="num">+3.2%p · 40%</span><br><span class="muted">넘겼다는 사실을 "싫어요"로 반영</span></span></div>
+        <div><i style="background: var(--s3)"></i><span><b>이유 데이터</b> <span class="num">+0.4%p · 5%</span><br><span class="muted">취향 아님 · 비싸요 · 이미 있어요</span></span></div>
+      </div>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>찜 비율</th><th>목록 v2</th><th>찜만 받는 스와이프</th><th>+ 넘김</th><th>+ 이유</th></tr></thead>
+        <tbody>
+          <tr><td>1세트 (모두 같은 인기순)</td><td>46.9%</td><td>46.9%</td><td>46.9%</td><td>46.9%</td></tr>
+          <tr><td>2세트</td><td>52.6%</td><td>59.6%</td><td>63.4%</td><td>63.7%</td></tr>
+          <tr><td>3세트</td><td>51.9%</td><td>58.0%</td><td>63.7%</td><td>64.8%</td></tr>
+          <tr><td><b>60장 전체</b></td><td>50.5%</td><td>54.8%</td><td>58.0%</td><td><b>58.5%</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure>
+      <div class="frame"><img src="data/results/figures/fig8_ladder.png" alt="데이터 사다리: 단계별 찜 비율, 세트별 찜 비율, 체류 대용"></div>
+      <figcaption>검증 주(2020-09-09~15), 봇 1,000명이 모든 방식을 돌아 같은 봇끼리 비교했습니다.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>알게 된 것</h2>
+    <div class="finds prose">
+      <div class="find"><span class="k s">화면 구성</span><span>데이터가 같아도 매 세트를 통째로 다시 고르면 찜이 +4.4%p 늘어납니다.</span></div>
+      <div class="find"><span class="k s">넘김 데이터</span><span>점점 더 개인화되는 힘은 넘김에서 나옵니다. 찜만 받으면 3세트에서 오히려 떨어지고(59.6 → 58.0%), 넘김을 받으면 3세트까지 계속 오릅니다. 최종 추천 20개 중 찜할 옷도 3.9개 늘어납니다.</span></div>
+      <div class="find"><span class="k">이유 버튼</span><span>효과가 작고, 그중 <b>'비싸요'만</b> 쓸모 있습니다. '비싸요'만 구분하면 +0.8%p로 이유 3가지(+0.4)보다 낫고, '이미 있어요'는 효과가 없습니다.</span></div>
+      <div class="find"><span class="k l">다음 주 구매</span><span>실제 구매 근접 적중은 인기 상품 위주의 목록이 유리합니다. 고객이 인기 상품을 많이 사기 때문입니다. 스와이프 엔진의 인기도 가중치를 0.3~1로 올리면 비깁니다.</span></div>
+      <div class="find"><span class="k">견고성</span><span>같은 엔진 비교는 설정 79가지에서 68승 11무 0패였습니다. 다른 고객 7묶음, seed 20개, 유행을 따르는 봇(+2.2%p)에서도 스와이프가 앞섰습니다.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>제품에 주는 뜻</h2>
+    <div class="todo">
+      <div class="card"><h3>넘김을 꼭 신호로 쓰기</h3><p class="muted">스와이프만 얻을 수 있는 데이터이고, 스와이프 차이의 40%가 여기서 나옵니다.</p></div>
+      <div class="card"><h3>이유 버튼은 '비싸요' 하나로</h3><p class="muted">시뮬레이션에서는 '비싸요' 하나만 받는 안이 가장 좋았습니다. 사람 평가에서 누르는 수고와 함께 확인합니다.</p></div>
+      <div class="card"><h3>엔진에 인기도 섞기</h3><p class="muted">인기도 가중치 0.3~1이면 취향은 이기고 구매 적중은 목록과 비깁니다. 인기도가 없으면 유행을 따르는 고객에게 크게 집니다.</p></div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>한계와 다음 단계</h2>
+    <ul>
+      <li>봇은 규칙으로 만든 가상 고객입니다. 몰입감이나 실제 체류시간은 재지 못합니다. 이 실험에서 첫 찜까지 장수(모두 2.3장)와 체류 대용(+1.6장 이하)은 차이가 거의 없었습니다.</li>
+      <li>데이터 사다리와 추가 분석은 검증 주 기준 탐색 결과입니다. 정답 주(9/16~22)는 원래 설계로 한 번만 채점했습니다.</li>
+      <li><b>다음:</b> 사람 대상 사용성 평가에서 찜 비율, 체류시간, 이유 버튼 사용을 함께 잽니다.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>자세한 결과: <a href="https://claude.ai/artifact/Y2CyUeqyLhYewfz4PkcVpg">결과 보고서</a> · <a href="https://claude.ai/artifact/QDc7ce9seuUasgKRcnpho8">데이터 사다리 설계</a> · <a href="https://github.com/DFRAKE/hm-experiment">GitHub 저장소</a></p>
+    <p>데이터: H&amp;M Personalized Fashion Recommendations (Kaggle). 비상업·연구용이며 사진도 같은 조건입니다.</p>
+  </footer>
+</main>
