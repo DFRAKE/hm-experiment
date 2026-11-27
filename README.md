@@ -26,6 +26,11 @@
 - 봇에 **유행 따르기**를 넣으면 실제 구매 설명력이 AUC 0.725 → 0.90으로 오른다. 이 봇에서도 같은 엔진 스와이프가 근소하게 이긴다(+2.2%p, 7묶음 중 5승 2무). 인기도를 안 쓰는 원래 스와이프 엔진은 크게 진다.
 - seed를 5개 → 20개로 늘려도 결과가 같다.
 
+**재설계: 데이터 사다리 (2026-11-27, 검증 주, [보고서 9장](report.md#9-재설계-데이터-사다리-2026-11-27-검증-주만))**
+- 메인 지표를 찜 비율로 두고, 스와이프가 추천기에 넘기는 데이터를 찜만 → +넘김 → +이유로 한 칸씩 늘렸다.
+- 찜 비율 목록 v2 50.5% → 찜만 54.8% → +넘김 58.0% → +이유 58.5%. 스와이프 차이(+8.0%p)의 약 55%는 화면 구성, 40%는 넘김 데이터, 5%는 이유 데이터. 다른 고객 7묶음에서도 같다.
+- 넘김 데이터가 있어야 3세트까지 계속 좋아진다. 이유 중에는 '비싸요'만 쓸모 있다.
+
 자세한 내용: [보고서 (report.md)](report.md) · [전체 135개 실행 결과표](data/results/all_runs_valid.md)
 
 ![노출에 따른 좋아할 옷 비율](data/results/figures/fig1_learning_curve.png)
@@ -35,6 +40,7 @@
 ![인기 편향](data/results/figures/fig5_popularity.png)
 ![취향과 구매의 맞바꿈](data/results/figures/fig6_tradeoff.png)
 ![유행 따르는 봇](data/results/figures/fig7_popbots.png)
+![데이터 사다리](data/results/figures/fig8_ladder.png)
 
 ## 실험 설계
 
@@ -62,7 +68,7 @@
 
 ```
 config.yaml              메인 실험 설정
-experiments.yaml         견고성 조건 목록 (135개 + 추가 15개)
+experiments.yaml         견고성 조건 목록 (135개 + 추가 15개 + 데이터 사다리 8개)
 configs/                 조건마다 자동 생성한 설정 (scripts/sweep.py)
 src/
   prepare.py             기간 자르기, 봇 후보, 상품 풀, A/B 배정
@@ -70,7 +76,8 @@ src/
   embed_image.py         사진 임베딩 (FashionCLIP)
   bots.py                봇 프로필과 반응 규칙
   calibrate_bots.py      봇 규칙 보정 (검증 주만)
-  simulate.py            목록형·스와이프형 세션 실행
+  simulate.py            목록형·스와이프형 세션 실행 (session.ladder: 데이터 사다리 방식 추가)
+  recommenders/signal_filter.py   데이터 사다리: 스와이프가 추천기에 넘기는 데이터 줄이기
   scoring.py             채점 (정답 주는 이 모듈에서만 읽음)
   metrics_taste.py       취향 회복 지표
 scripts/
@@ -83,6 +90,7 @@ scripts/
   analyze_tradeoff.py    추가 분석: 취향과 구매의 맞바꿈 (fig6)
   calibrate_pop.py       추가 분석: 유행 따르는 봇의 실제 구매 설명력
   analyze_popbots.py     추가 분석: 유행 따르는 봇 결과, seed 20개 (fig7)
+  analyze_ladder.py      재설계: 데이터 사다리 (fig8)
 tests/                   단위 테스트 (pytest)
 data/results/            조건별 검증 주 요약 결과, 그래프
 ```

@@ -151,6 +151,10 @@ presets:
     label: "메인 그대로, seed 5개 -> 20개 (반복 횟수만 늘림)"
     set:
       session.seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+  ladder:
+    label: "재설계 (2026-11-27) 데이터 사다리: 같은 엔진 v2에서 스와이프가 넘기는 데이터를 찜만 / +넘김 / +이유로 늘림"
+    set:
+      session.ladder: true
 
 grids:   # 두 가지를 함께 바꾸기 (한 가지만 바꾼 조합은 factors 결과를 그대로 씀)
   - name: noise_x_explore
@@ -171,4 +175,4 @@ grids:   # 두 가지를 함께 바꾸기 (한 가지만 바꾼 조합은 factor
 
 replicate:   # 다른 고객 7묶음으로 반복 (묶음마다 약 1,110명, 서로 겹치지 않음)
   folds: 7
-  conditions: [main, noise-0p3, explore-6, likeq-0p7, price-2, rule-off, rule-orig, rec-image, popw-1]
+  conditions: [main, noise-0p3, explore-6, likeq-0p7, price-2, rule-off, rule-orig, rec-image, popw-1, ladder]

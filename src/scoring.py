@@ -27,7 +27,10 @@ from src.config import experiment_tag, load_config, results_dir, session_meta, s
 from src.items import ItemPool, load_pool
 from src.metrics_taste import taste_metrics
 
-COMPARISONS = [("list", "swipe"), ("list_v2", "swipe_v2")]   # (A쪽 방식, B쪽 방식)
+COMPARISONS = [("list", "swipe"), ("list_v2", "swipe_v2"),    # (A쪽 방식, B쪽 방식)
+               # 데이터 사다리 (session.ladder 실행에만 있음). 스와이프끼리는 같은 봇이라 paired_* 칼럼을 본다
+               ("list_v2", "swipe_s1"), ("list_v2", "swipe_s2"), ("list_v2", "swipe_rp"), ("list_v2", "swipe_rh"),
+               ("swipe_s1", "swipe_s2"), ("swipe_s2", "swipe_v2"), ("swipe_s2", "swipe_rp"), ("swipe_s2", "swipe_rh")]
 BASELINE = "pop"
 BIN = 10
 

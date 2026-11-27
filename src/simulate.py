@@ -25,9 +25,20 @@ from src.modes.swipe_mode import run_swipe_session
 from src.recommenders.embedding_tag import EmbeddingTagRecommender
 from src.recommenders.list_plus import ListPlusRecommender, PopularityBaseline
 from src.recommenders.popularity import PopularityRecommender
+from src.recommenders.signal_filter import SignalFilter
 
-MODES = ("list", "swipe", "list_v2", "swipe_v2", "pop")    # 순서 고정 (난수 seed에 쓰임)
-MODE_GROUP = {"list": "A", "list_v2": "A", "pop": "A", "swipe": "B", "swipe_v2": "B"}
+# 순서 고정 (난수 seed에 쓰임). 데이터 사다리 방식은 뒤에 붙여서 기존 방식의 난수가 바뀌지 않게 한다
+MODES = ("list", "swipe", "list_v2", "swipe_v2", "pop", "swipe_s1", "swipe_s2", "swipe_rp", "swipe_rh")
+BASE_MODES = MODES[:5]
+# session.ladder: true 일 때 (재설계 2026-11-27). 원래 엔진(list, swipe)은 빼고 같은 엔진 v2 + 사다리만
+LADDER_MODES = ("list_v2", "swipe_v2", "pop", "swipe_s1", "swipe_s2", "swipe_rp", "swipe_rh")
+LADDER_LEVEL = {"swipe_s1": "like", "swipe_s2": "skip", "swipe_rp": "expensive", "swipe_rh": "already_have"}
+MODE_GROUP = {"list": "A", "list_v2": "A", "pop": "A", "swipe": "B", "swipe_v2": "B",
+              **{m: "B" for m in LADDER_LEVEL}}
+
+
+def session_modes(cfg: dict) -> tuple[str, ...]:
+    return LADDER_MODES if cfg["session"].get("ladder") else BASE_MODES
 
 
 def run_bot(bot: Bot, k: int, main_cat: str, mode: str, pool: ItemPool, cfg: dict, seed: int) -> Session:
@@ -47,11 +58,16 @@ def run_bot(bot: Bot, k: int, main_cat: str, mode: str, pool: ItemPool, cfg: dic
         return run_swipe_session(bot, pool, rec, react_rng, seed, mode=mode)
     if mode == "pop":
         return run_list_session(bot, pool, PopularityBaseline(pool, main_cat), react_rng, seed, mode=mode)
+    if mode in LADDER_LEVEL:
+        rec = SignalFilter(EmbeddingTagRecommender(pool, rec_rng, cfg["recommender_v2"], category=main_cat),
+                           LADDER_LEVEL[mode])
+        return run_swipe_session(bot, pool, rec, react_rng, seed, mode=mode, exclude_skipped=mode != "swipe_s1")
     raise ValueError(mode)
 
 
 def run_seed(seed: int, cfg: dict, pool: ItemPool, train_tx: pd.DataFrame, table: pd.DataFrame,
-             modes=MODES, progress: bool = False) -> tuple[pd.DataFrame, pd.DataFrame]:
+             modes=None, progress: bool = False) -> tuple[pd.DataFrame, pd.DataFrame]:
+    modes = session_modes(cfg) if modes is None else modes
     bots = build_profiles(train_tx, pool, table, cfg, seed)
     logs, finals = [], []
     it = enumerate(bots)
@@ -105,7 +121,7 @@ def main(argv=None) -> None:
         (out / f"meta_seed{seed}{suffix}.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2))
         a = log[log["assigned"]]
         rates = a.groupby("group")["action"].apply(lambda x: x.eq("like").mean()).round(3).to_dict()
-        print(f"[{experiment_tag(cfg)}] seed {seed}: {len(table)} bots × {len(MODES)} modes, {len(log):,} exposures, "
+        print(f"[{experiment_tag(cfg)}] seed {seed}: {len(table)} bots × {len(session_modes(cfg))} modes, {len(log):,} exposures, "
               f"{time.time() - t0:.0f}s | like rate (assigned) {rates}", flush=True)
 
 

@@ -159,3 +159,27 @@ def test_pop_weight_zero_is_unchanged():
     c["bot_rule"]["pop_weight"], c["bot_rule"]["pop_mode"] = 0.5, "personal"
     p = B.build_profiles(tx, pool, table, c, 0)
     assert all(x.pop_coef >= 0 for x in p) and max(x.pop_coef for x in p) > 0
+
+
+def test_signal_filter_levels():
+    """데이터 사다리: 단계마다 엔진에 넘어가는 (행동, 이유)."""
+    from src.recommenders.signal_filter import SignalFilter
+
+    class Rec:
+        def __init__(self):
+            self.got = []
+
+        def update(self, a, act, reason):
+            self.got.append((act, reason))
+
+    events = [("like", None), ("skip", "not_my_taste"), ("skip", "expensive"), ("skip", "already_have")]
+    want = {"like": [("like", None), ("skip", None), ("skip", None), ("skip", None)],
+            "skip": [("like", None)] + [("skip", "not_my_taste")] * 3,
+            "expensive": [("like", None), ("skip", "not_my_taste"), ("skip", "expensive"), ("skip", "not_my_taste")],
+            "already_have": [("like", None), ("skip", "not_my_taste"), ("skip", "not_my_taste"), ("skip", "already_have")]}
+    for level, exp in want.items():
+        r = Rec()
+        f = SignalFilter(r, level)
+        for act, reason in events:
+            f.update("x", act, reason)
+        assert r.got == exp, level

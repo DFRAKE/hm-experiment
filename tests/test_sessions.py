@@ -11,7 +11,7 @@ from src.recommenders.base import Recommender
 from src.recommenders.embedding_tag import EmbeddingTagRecommender
 from src.recommenders.popularity import PopularityRecommender, popularity_order
 from src.recommenders.list_plus import ListPlusRecommender
-from src.simulate import MODES, run_bot, run_seed
+from src.simulate import BASE_MODES as MODES, LADDER_MODES, run_bot, run_seed
 
 CFG = load_config()
 EXPOSURE = CFG["session"]["exposure"]
@@ -153,11 +153,11 @@ def test_v2_list_gets_likes_only(ctx):
 
 
 def test_v2_shared_params():
-    """A'와 B'는 같은 엔진 설정을 쓴다 (설정 블록이 하나)."""
+    """A'와 B'(+ 데이터 사다리 방식)는 같은 엔진 설정을 쓴다 (설정 블록이 하나)."""
     import inspect
     import src.simulate as sim
     src_code = inspect.getsource(sim.run_bot)
-    assert src_code.count('cfg["recommender_v2"]') == 2
+    assert src_code.count('cfg["recommender_v2"]') == 3     # list_v2, swipe_v2, 사다리
 
 
 def test_pop_baseline_ignores_likes(ctx):
@@ -165,3 +165,23 @@ def test_pop_baseline_ignores_likes(ctx):
     cat = pool.df["index_group_name"].to_numpy()
     for b, g in final[final.group == "pop"].groupby("bot_id"):
         assert g.sort_values("rank")["article_id"].tolist() == popularity_order(pool, cat == table.at[b, "main_cat"])[:20]
+
+
+def test_ladder_keeps_base_sessions(ctx):
+    """데이터 사다리 실행: 같은 엔진 v2(list_v2, swipe_v2)는 기존 실행과 똑같고, 사다리 방식도 노출 예산·중복 규칙을 지킨다."""
+    import copy
+    cfg = copy.deepcopy(CFG)
+    cfg["session"]["ladder"] = True
+    log, final = run_seed(0, cfg, ctx["pool"], ctx["train"], ctx["table"])
+    assert set(log["group"]) == set(LADDER_MODES)
+    n = log.groupby(["group", "bot_id"]).size()
+    assert (n == EXPOSURE).all() and len(n) == len(LADDER_MODES) * N_BOTS
+    assert not log.duplicated(["group", "bot_id", "article_id"]).any()
+    cols = ["group", "bot_id", "set_no", "pos", "article_id", "action", "reason"]
+    for m in ("list_v2", "swipe_v2", "pop"):
+        a = ctx["log"][ctx["log"]["group"] == m][cols].reset_index(drop=True)
+        b = log[log["group"] == m][cols].reset_index(drop=True)
+        pd.testing.assert_frame_equal(a, b)
+    # 1세트는 모든 같은 엔진 방식이 같은 인기순 20장
+    s1 = log[log["set_no"] == 1].groupby(["bot_id", "group"])["article_id"].apply(tuple).unstack()
+    assert (s1.nunique(axis=1) == 1).all()

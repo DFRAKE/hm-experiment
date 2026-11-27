@@ -117,7 +117,7 @@ def conditions(base: dict | None = None) -> list[dict]:
 
 
 # config.yaml 에 없어도 되는 설정 (기본값이 코드에 있음. config.yaml 에 넣으면 기존 세션 기록과 달라져 다시 돌려야 함)
-OPTIONAL_KEYS = {"bots.table", "bot_rule.pop_weight", "bot_rule.pop_mode"}
+OPTIONAL_KEYS = {"bots.table", "bot_rule.pop_weight", "bot_rule.pop_mode", "session.ladder"}
 
 
 def build_cfg(base: dict, c: dict) -> dict:

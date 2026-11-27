@@ -47,6 +47,8 @@ def signature(c: dict, comp: str) -> str:
 def load() -> tuple[pd.DataFrame, list[str]]:
     rows, missing = [], []
     for c in conditions() + [ORIGINAL]:
+        if c["set"].get("session.ladder"):    # 데이터 사다리 실행은 scripts/analyze_ladder.py 에서 따로 정리
+            continue
         if c["name"] == "original":
             f = RES / "valid" / "summary.csv"
         else:
